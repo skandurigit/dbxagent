@@ -1,0 +1,291 @@
+2026-05-03 15:23:45,468 [INFO] agent: ========================================================
+2026-05-03 15:23:45,468 [INFO] agent:   Databricks 24/7 Reliability Agent
+2026-05-03 15:23:45,468 [INFO] agent: ========================================================
+2026-05-03 15:23:45,469 [INFO] agent:   Host     : https://dbc-40d2e8f5-733e.cloud.databricks.com
+2026-05-03 15:23:45,469 [INFO] agent:   Poll     : every 60s
+2026-05-03 15:23:45,469 [INFO] agent:   Lookback : 60 min on first scan
+2026-05-03 15:23:45,470 [INFO] agent:   Email    : ✓ smtp.gmail.com
+2026-05-03 15:23:45,470 [INFO] agent: ========================================================
+2026-05-03 15:23:45,483 [INFO] agent: Monitoring ALL jobs and pipelines. Press Ctrl+C to stop.
+
+2026-05-03 15:23:45,483 [INFO] monitor: ─── Scan cycle @ 15:23:45 UTC ───────────────────────────────
+2026-05-03 15:23:47,694 [WARNING] monitor:   [P] FAILED | name=POC - Workspace A - Bronze Pipeline update=f933974d-79c6-420f-9af9-3569e1734ecf
+2026-05-03 15:23:48,222 [WARNING] monitor:   [P] FAILED | name=POC - Workspace B - Analytics Pipeline update=85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+2026-05-03 15:23:48,223 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 2  |  Total: 2
+2026-05-03 15:23:50,931 [INFO] analyzer: LLM → escalate (high) | PySparkTypeError due to incorrect use of float instead of Column or str.
+2026-05-03 15:23:50,932 [INFO] monitor:   Analysis | pipeline_60aa8671-a7af-41ad-bd60-b09fbf3df730_f933974d-79c6-420f-9af9-3569e1734ecf
+    Action     : escalate
+    Confidence : high
+    Root Cause : PySparkTypeError due to incorrect use of float instead of Column or str.
+    Reasoning  : The error indicates a schema mismatch where a float is being used instead of a Column or str in PySpark operations. This is a code issue that needs to be addressed by the development team.
+    Fix Hint   : Ensure that all operations involving DataFrame columns use the correct PySpark Column or string types.
+2026-05-03 15:23:54,792 [INFO] notifier: Email sent: ⚠️ Escalation Required: POC - Workspace A - Bronze Pipeline → ['pappu.pink@yahoo.com']
+2026-05-03 15:23:56,850 [INFO] analyzer: LLM → escalate (high) | The table 'workspace.workspace_a_bronze.bronze_customer_transactions' cannot be found.
+2026-05-03 15:23:56,850 [INFO] monitor:   Analysis | pipeline_e80b2fde-95dd-46c7-8bc8-7f74e7a8dde2_85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+    Action     : escalate
+    Confidence : high
+    Root Cause : The table 'workspace.workspace_a_bronze.bronze_customer_transactions' cannot be found.
+    Reasoning  : The error indicates a missing table which is a critical part of the pipeline. This is likely due to a schema mismatch, incorrect table name, or the table not being created or shared properly. This requires investigation and resolution by the data engineering team.
+    Fix Hint   : Verify the existence and correct naming of the table 'workspace.workspace_a_bronze.bronze_customer_transactions'. Ensure it is properly shared and accessible in the current workspace.
+2026-05-03 15:24:00,470 [INFO] notifier: Email sent: ⚠️ Escalation Required: POC - Workspace B - Analytics Pipeline → ['pappu.pink@yahoo.com']
+2026-05-03 15:24:45,564 [INFO] monitor: ─── Scan cycle @ 15:24:45 UTC ───────────────────────────────
+2026-05-03 15:24:46,395 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:25:46,587 [INFO] monitor: ─── Scan cycle @ 15:25:46 UTC ───────────────────────────────
+2026-05-03 15:25:48,356 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:26:46,734 [INFO] monitor: ─── Scan cycle @ 15:26:46 UTC ───────────────────────────────
+2026-05-03 15:26:47,580 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:27:47,140 [INFO] monitor: ─── Scan cycle @ 15:27:47 UTC ───────────────────────────────
+2026-05-03 15:27:48,187 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:28:47,524 [INFO] monitor: ─── Scan cycle @ 15:28:47 UTC ───────────────────────────────
+2026-05-03 15:28:49,725 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:29:47,958 [INFO] monitor: ─── Scan cycle @ 15:29:47 UTC ───────────────────────────────
+2026-05-03 15:29:49,933 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:30:48,351 [INFO] monitor: ─── Scan cycle @ 15:30:48 UTC ───────────────────────────────
+2026-05-03 15:30:49,174 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:31:48,746 [INFO] monitor: ─── Scan cycle @ 15:31:48 UTC ───────────────────────────────
+2026-05-03 15:31:49,859 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:32:49,117 [INFO] monitor: ─── Scan cycle @ 15:32:49 UTC ───────────────────────────────
+2026-05-03 15:32:49,954 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:33:49,620 [INFO] monitor: ─── Scan cycle @ 15:33:49 UTC ───────────────────────────────
+2026-05-03 15:33:50,446 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:34:49,993 [INFO] monitor: ─── Scan cycle @ 15:34:49 UTC ───────────────────────────────
+2026-05-03 15:34:50,835 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:35:50,380 [INFO] monitor: ─── Scan cycle @ 15:35:50 UTC ───────────────────────────────
+2026-05-03 15:35:52,263 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:36:50,756 [INFO] monitor: ─── Scan cycle @ 15:36:50 UTC ───────────────────────────────
+2026-05-03 15:36:53,808 [WARNING] monitor:   [P] FAILED | name=Test Pipeline 6 - Retry Success (Fails First, Fixed on Retry) update=d82bcc81-f8db-4303-a8a6-d6b70940dfb2
+2026-05-03 15:36:53,809 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 1  |  Total: 1
+2026-05-03 15:36:55,892 [INFO] analyzer: LLM → escalate (high) | The pipeline failed due to a reference to a non-existent column 'invalid_column_name'.
+2026-05-03 15:36:55,892 [INFO] monitor:   Analysis | pipeline_8bf0fd99-d478-4f63-9fe6-f02eee14d7e0_d82bcc81-f8db-4303-a8a6-d6b70940dfb2
+    Action     : escalate
+    Confidence : high
+    Root Cause : The pipeline failed due to a reference to a non-existent column 'invalid_column_name'.
+    Reasoning  : The error is caused by a schema mismatch where the specified column does not exist in the dataset. This is not a transient issue and requires correction in the code or data schema.
+    Fix Hint   : Ensure the column names in the code match the actual dataset schema.
+2026-05-03 15:37:00,045 [INFO] notifier: Email sent: ⚠️ Escalation Required: Test Pipeline 6 - Retry Success (Fails First, Fixed on Retry) → ['pappu.pink@yahoo.com']
+2026-05-03 15:37:51,147 [INFO] monitor: ─── Scan cycle @ 15:37:51 UTC ───────────────────────────────
+2026-05-03 15:37:52,310 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:38:51,510 [INFO] monitor: ─── Scan cycle @ 15:38:51 UTC ───────────────────────────────
+2026-05-03 15:38:52,849 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:39:51,892 [INFO] monitor: ─── Scan cycle @ 15:39:51 UTC ───────────────────────────────
+2026-05-03 15:39:52,737 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:40:52,269 [INFO] monitor: ─── Scan cycle @ 15:40:52 UTC ───────────────────────────────
+2026-05-03 15:40:53,082 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:41:52,636 [INFO] monitor: ─── Scan cycle @ 15:41:52 UTC ───────────────────────────────
+2026-05-03 15:41:53,956 [WARNING] monitor:   [A] FAILED | job=OOM Test Job - Memory Exhaustion (Will Fail First) run=408102943769695
+2026-05-03 15:41:54,562 [WARNING] monitor:   [A] FAILED | job=OOM Test Job - Memory Exhaustion (Will Fail First) run=481779731784936
+2026-05-03 15:41:55,328 [INFO] monitor:   Jobs (completed): 2  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 2
+2026-05-03 15:41:58,327 [INFO] analyzer: LLM → retry (high) | The job failed due to an out-of-memory (OOM) error.
+2026-05-03 15:41:58,327 [INFO] monitor:   Analysis | job_750755384096813_408102943769695
+    Action     : retry
+    Confidence : high
+    Root Cause : The job failed due to an out-of-memory (OOM) error.
+    Reasoning  : The error message indicates a memory exhaustion issue, which is typically transient and can be resolved by retrying the job. If the problem persists, consider increasing the cluster memory or optimizing the job to use less memory.
+    Fix Hint   : Consider increasing the memory allocation for the cluster or optimizing the job to handle memory usage more efficiently.
+2026-05-03 15:42:03,125 [INFO] notifier: Email sent: 🚨 JOB Failure: OOM Test Job - Memory Exhaustion (Will Fail First) — RETRY → ['pappu.pink@yahoo.com']
+2026-05-03 15:42:08,088 [INFO] notifier: Email sent: ✅ Fix Applied: OOM Test Job - Memory Exhaustion (Will Fail First) → ['pappu.pink@yahoo.com']
+2026-05-03 15:42:08,089 [INFO] monitor:   Fix applied | job_750755384096813_408102943769695 → retry attempt #1
+2026-05-03 15:42:16,418 [INFO] analyzer: LLM → retry (medium) | The task failed due to an out-of-memory (OOM) error.
+2026-05-03 15:42:16,418 [INFO] monitor:   Analysis | job_750755384096813_481779731784936
+    Action     : retry
+    Confidence : medium
+    Root Cause : The task failed due to an out-of-memory (OOM) error.
+    Reasoning  : The error message indicates a memory exhaustion issue, which is typically transient and may succeed upon retrying with the same configuration. If the issue persists, consider increasing the memory allocation for the task.
+    Fix Hint   : Consider increasing the memory allocation for the task if retries continue to fail.
+2026-05-03 15:42:21,031 [INFO] notifier: Email sent: 🚨 JOB Failure: OOM Test Job - Memory Exhaustion (Will Fail First) — RETRY → ['pappu.pink@yahoo.com']
+2026-05-03 15:42:25,473 [INFO] notifier: Email sent: ✅ Fix Applied: OOM Test Job - Memory Exhaustion (Will Fail First) → ['pappu.pink@yahoo.com']
+2026-05-03 15:42:25,473 [INFO] monitor:   Fix applied | job_750755384096813_481779731784936 → retry attempt #1
+2026-05-03 15:42:52,983 [INFO] monitor: ─── Scan cycle @ 15:42:52 UTC ───────────────────────────────
+2026-05-03 15:42:53,564 [WARNING] monitor:   [A] FAILED | job=OOM Test Job - Memory Exhaustion (Will Fail First) run=38593178172762
+2026-05-03 15:42:54,117 [INFO] monitor:   Jobs (completed): 1  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 1
+2026-05-03 15:42:56,478 [INFO] analyzer: LLM → retry (high) | The task failed due to an out-of-memory (OOM) error.
+2026-05-03 15:42:56,478 [INFO] monitor:   Analysis | job_750755384096813_38593178172762
+    Action     : retry
+    Confidence : high
+    Root Cause : The task failed due to an out-of-memory (OOM) error.
+    Reasoning  : The job is named 'OOM Test Job - Memory Exhaustion (Will Fail First)', indicating it is a test job designed to fail initially due to memory constraints. This suggests a transient error scenario where retrying might allow the job to succeed if resources are reallocated.
+    Fix Hint   : Consider increasing the memory allocation for the cluster or optimizing the notebook to use less memory.
+2026-05-03 15:43:00,087 [INFO] notifier: Email sent: 🚨 JOB Failure: OOM Test Job - Memory Exhaustion (Will Fail First) — RETRY → ['pappu.pink@yahoo.com']
+2026-05-03 15:43:05,390 [INFO] notifier: Email sent: ✅ Fix Applied: OOM Test Job - Memory Exhaustion (Will Fail First) → ['pappu.pink@yahoo.com']
+2026-05-03 15:43:05,391 [INFO] monitor:   Fix applied | job_750755384096813_38593178172762 → retry attempt #1
+2026-05-03 15:43:53,346 [INFO] monitor: ─── Scan cycle @ 15:43:53 UTC ───────────────────────────────
+2026-05-03 15:43:54,172 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:44:53,709 [INFO] monitor: ─── Scan cycle @ 15:44:53 UTC ───────────────────────────────
+2026-05-03 15:44:54,571 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:45:54,094 [INFO] monitor: ─── Scan cycle @ 15:45:54 UTC ───────────────────────────────
+2026-05-03 15:45:54,927 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:46:54,463 [INFO] monitor: ─── Scan cycle @ 15:46:54 UTC ───────────────────────────────
+2026-05-03 15:46:55,280 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:47:54,828 [INFO] monitor: ─── Scan cycle @ 15:47:54 UTC ───────────────────────────────
+2026-05-03 15:47:55,750 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:48:55,183 [INFO] monitor: ─── Scan cycle @ 15:48:55 UTC ───────────────────────────────
+2026-05-03 15:49:03,046 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:49:55,890 [INFO] monitor: ─── Scan cycle @ 15:49:55 UTC ───────────────────────────────
+2026-05-03 15:49:56,935 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:50:56,241 [INFO] monitor: ─── Scan cycle @ 15:50:56 UTC ───────────────────────────────
+2026-05-03 15:50:56,841 [WARNING] monitor:   [A] FAILED | job=OOM Test Job - Memory Exhaustion (Will Fail First) run=377166334452218
+2026-05-03 15:50:57,390 [INFO] monitor:   Jobs (completed): 1  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 1
+2026-05-03 15:50:59,298 [INFO] analyzer: LLM → retry (high) | The task failed due to an out-of-memory (OOM) error.
+2026-05-03 15:50:59,299 [INFO] monitor:   Analysis | job_750755384096813_377166334452218
+    Action     : retry
+    Confidence : high
+    Root Cause : The task failed due to an out-of-memory (OOM) error.
+    Reasoning  : The job is named 'OOM Test Job - Memory Exhaustion' and is expected to fail initially due to memory issues. This suggests a transient error related to memory allocation, which can often be resolved by retrying.
+    Fix Hint   : Consider increasing the memory allocation for the cluster or optimizing the notebook to use less memory.
+2026-05-03 15:51:03,731 [INFO] notifier: Email sent: 🚨 JOB Failure: OOM Test Job - Memory Exhaustion (Will Fail First) — RETRY → ['pappu.pink@yahoo.com']
+2026-05-03 15:51:07,725 [INFO] notifier: Email sent: ✅ Fix Applied: OOM Test Job - Memory Exhaustion (Will Fail First) → ['pappu.pink@yahoo.com']
+2026-05-03 15:51:07,725 [INFO] monitor:   Fix applied | job_750755384096813_377166334452218 → retry attempt #1
+2026-05-03 15:51:56,572 [INFO] monitor: ─── Scan cycle @ 15:51:56 UTC ───────────────────────────────
+2026-05-03 15:51:57,388 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:52:56,931 [INFO] monitor: ─── Scan cycle @ 15:52:56 UTC ───────────────────────────────
+2026-05-03 15:52:57,824 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:53:57,297 [INFO] monitor: ─── Scan cycle @ 15:53:57 UTC ───────────────────────────────
+2026-05-03 15:53:58,108 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:54:57,660 [INFO] monitor: ─── Scan cycle @ 15:54:57 UTC ───────────────────────────────
+2026-05-03 15:54:58,473 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:55:58,017 [INFO] monitor: ─── Scan cycle @ 15:55:58 UTC ───────────────────────────────
+2026-05-03 15:55:58,824 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:56:58,364 [INFO] monitor: ─── Scan cycle @ 15:56:58 UTC ───────────────────────────────
+2026-05-03 15:56:59,191 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:57:58,721 [INFO] monitor: ─── Scan cycle @ 15:57:58 UTC ───────────────────────────────
+2026-05-03 15:57:59,568 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:58:59,074 [INFO] monitor: ─── Scan cycle @ 15:58:59 UTC ───────────────────────────────
+2026-05-03 15:58:59,989 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 15:59:59,421 [INFO] monitor: ─── Scan cycle @ 15:59:59 UTC ───────────────────────────────
+2026-05-03 16:00:00,390 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:00:59,777 [INFO] monitor: ─── Scan cycle @ 16:00:59 UTC ───────────────────────────────
+2026-05-03 16:01:00,643 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:02:00,128 [INFO] monitor: ─── Scan cycle @ 16:02:00 UTC ───────────────────────────────
+2026-05-03 16:02:02,763 [WARNING] monitor:   [P] FAILED | name=Test Pipeline 1 - Successful Bronze to Silver update=06cef959-915f-436f-b344-c79615f289ec
+2026-05-03 16:02:02,763 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 1  |  Total: 1
+2026-05-03 16:02:04,580 [INFO] analyzer: LLM → escalate (high) | No tables were defined in the pipeline, which is required for execution.
+2026-05-03 16:02:04,581 [INFO] monitor:   Analysis | pipeline_e5a7e9d4-913f-4688-ba01-9e61146fca4f_06cef959-915f-436f-b344-c79615f289ec
+    Action     : escalate
+    Confidence : high
+    Root Cause : No tables were defined in the pipeline, which is required for execution.
+    Reasoning  : The pipeline is missing table definitions, which is a critical configuration issue that cannot be resolved by retrying or repairing. This requires intervention to ensure that the necessary tables are defined in the pipeline code.
+    Fix Hint   : Ensure that the pipeline includes table definitions using CREATE MATERIALIZED VIEW in SQL or @dlt.table in Python.
+2026-05-03 16:02:08,185 [INFO] notifier: Email sent: ⚠️ Escalation Required: Test Pipeline 1 - Successful Bronze to Silver → ['pappu.pink@yahoo.com']
+2026-05-03 16:03:00,486 [INFO] monitor: ─── Scan cycle @ 16:03:00 UTC ───────────────────────────────
+2026-05-03 16:03:02,163 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:04:00,835 [INFO] monitor: ─── Scan cycle @ 16:04:00 UTC ───────────────────────────────
+2026-05-03 16:04:01,748 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:05:01,204 [INFO] monitor: ─── Scan cycle @ 16:05:01 UTC ───────────────────────────────
+2026-05-03 16:05:02,392 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:06:01,568 [INFO] monitor: ─── Scan cycle @ 16:06:01 UTC ───────────────────────────────
+2026-05-03 16:06:04,269 [WARNING] monitor:   [B] Transition FAILED | job=Daily Sales ETL Job run=44710682076355
+2026-05-03 16:06:04,625 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 1  |  Pipelines: 0  |  Total: 1
+2026-05-03 16:06:08,160 [INFO] analyzer: LLM → retry (medium) | The task 'notebook_task_Simple_PySpark_ETL' failed multiple times.
+2026-05-03 16:06:08,161 [INFO] monitor:   Analysis | job_701361524317571_44710682076355
+    Action     : retry
+    Confidence : medium
+    Root Cause : The task 'notebook_task_Simple_PySpark_ETL' failed multiple times.
+    Reasoning  : The repeated failure of the same task suggests a transient issue such as a network timeout or resource unavailability. Retrying the task may resolve the issue if it was due to temporary conditions.
+    Fix Hint   : none
+2026-05-03 16:06:13,313 [INFO] notifier: Email sent: 🚨 JOB Failure: Daily Sales ETL Job — RETRY → ['pappu.pink@yahoo.com']
+2026-05-03 16:06:18,000 [INFO] notifier: Email sent: ✅ Fix Applied: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 16:06:18,000 [INFO] monitor:   Fix applied | job_701361524317571_44710682076355 → retry attempt #1
+2026-05-03 16:07:02,286 [INFO] monitor: ─── Scan cycle @ 16:07:02 UTC ───────────────────────────────
+2026-05-03 16:07:03,192 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:08:02,633 [INFO] monitor: ─── Scan cycle @ 16:08:02 UTC ───────────────────────────────
+2026-05-03 16:08:03,757 [WARNING] monitor:   [B] Transition FAILED | job=Daily Sales ETL Job run=783263996779730
+2026-05-03 16:08:04,048 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 1  |  Pipelines: 0  |  Total: 1
+2026-05-03 16:08:05,688 [INFO] analyzer: LLM → retry (medium) | The task 'notebook_task_Simple_PySpark_ETL' failed due to a transient error.
+2026-05-03 16:08:05,688 [INFO] monitor:   Analysis | job_701361524317571_783263996779730
+    Action     : retry
+    Confidence : medium
+    Root Cause : The task 'notebook_task_Simple_PySpark_ETL' failed due to a transient error.
+    Reasoning  : The error message indicates a workload failure without specifying a persistent issue like schema mismatch or bad credentials. This suggests a transient issue such as a network timeout or resource contention.
+    Fix Hint   : none
+2026-05-03 16:08:09,338 [INFO] notifier: Email sent: 🚨 JOB Failure: Daily Sales ETL Job — RETRY → ['pappu.pink@yahoo.com']
+2026-05-03 16:08:13,476 [INFO] notifier: Email sent: ✅ Fix Applied: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 16:08:13,476 [INFO] monitor:   Fix applied | job_701361524317571_783263996779730 → retry attempt #1
+2026-05-03 16:09:02,977 [INFO] monitor: ─── Scan cycle @ 16:09:02 UTC ───────────────────────────────
+2026-05-03 16:09:03,806 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:10:03,340 [INFO] monitor: ─── Scan cycle @ 16:10:03 UTC ───────────────────────────────
+2026-05-03 16:10:04,468 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:11:03,679 [INFO] monitor: ─── Scan cycle @ 16:11:03 UTC ───────────────────────────────
+2026-05-03 16:11:04,523 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:12:04,032 [INFO] monitor: ─── Scan cycle @ 16:12:04 UTC ───────────────────────────────
+2026-05-03 16:12:05,149 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:13:04,377 [INFO] monitor: ─── Scan cycle @ 16:13:04 UTC ───────────────────────────────
+2026-05-03 16:13:05,196 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:14:04,729 [INFO] monitor: ─── Scan cycle @ 16:14:04 UTC ───────────────────────────────
+2026-05-03 16:14:05,556 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:15:05,075 [INFO] monitor: ─── Scan cycle @ 16:15:05 UTC ───────────────────────────────
+2026-05-03 16:15:05,994 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:16:05,423 [INFO] monitor: ─── Scan cycle @ 16:16:05 UTC ───────────────────────────────
+2026-05-03 16:16:06,529 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:17:05,768 [INFO] monitor: ─── Scan cycle @ 16:17:05 UTC ───────────────────────────────
+2026-05-03 16:17:06,619 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:18:06,114 [INFO] monitor: ─── Scan cycle @ 16:18:06 UTC ───────────────────────────────
+2026-05-03 16:18:07,208 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:19:06,455 [INFO] monitor: ─── Scan cycle @ 16:19:06 UTC ───────────────────────────────
+2026-05-03 16:19:07,270 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:20:06,804 [INFO] monitor: ─── Scan cycle @ 16:20:06 UTC ───────────────────────────────
+2026-05-03 16:20:07,623 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:21:07,138 [INFO] monitor: ─── Scan cycle @ 16:21:07 UTC ───────────────────────────────
+2026-05-03 16:21:07,967 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:22:07,486 [INFO] monitor: ─── Scan cycle @ 16:22:07 UTC ───────────────────────────────
+2026-05-03 16:22:08,706 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:23:07,842 [INFO] monitor: ─── Scan cycle @ 16:23:07 UTC ───────────────────────────────
+2026-05-03 16:23:08,659 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:24:08,190 [INFO] monitor: ─── Scan cycle @ 16:24:08 UTC ───────────────────────────────
+2026-05-03 16:24:09,036 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:25:08,541 [INFO] monitor: ─── Scan cycle @ 16:25:08 UTC ───────────────────────────────
+2026-05-03 16:25:09,660 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:26:08,876 [INFO] monitor: ─── Scan cycle @ 16:26:08 UTC ───────────────────────────────
+2026-05-03 16:26:09,685 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:27:09,214 [INFO] monitor: ─── Scan cycle @ 16:27:09 UTC ───────────────────────────────
+2026-05-03 16:27:10,053 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:28:09,556 [INFO] monitor: ─── Scan cycle @ 16:28:09 UTC ───────────────────────────────
+2026-05-03 16:28:10,369 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:29:09,902 [INFO] monitor: ─── Scan cycle @ 16:29:09 UTC ───────────────────────────────
+2026-05-03 16:29:10,859 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:30:10,246 [INFO] monitor: ─── Scan cycle @ 16:30:10 UTC ───────────────────────────────
+2026-05-03 16:30:11,057 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:31:10,600 [INFO] monitor: ─── Scan cycle @ 16:31:10 UTC ───────────────────────────────
+2026-05-03 16:31:11,424 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:32:10,939 [INFO] monitor: ─── Scan cycle @ 16:32:10 UTC ───────────────────────────────
+2026-05-03 16:32:11,764 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:33:11,281 [INFO] monitor: ─── Scan cycle @ 16:33:11 UTC ───────────────────────────────
+2026-05-03 16:33:12,114 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:34:11,623 [INFO] monitor: ─── Scan cycle @ 16:34:11 UTC ───────────────────────────────
+2026-05-03 16:34:12,748 [WARNING] monitor:   [B] Transition FAILED | job=Daily Sales ETL Job run=742129376869207
+2026-05-03 16:34:13,040 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 1  |  Pipelines: 0  |  Total: 1
+2026-05-03 16:34:16,296 [INFO] analyzer: LLM → retry (medium) | The error details are not provided, but it is likely a transient error.
+2026-05-03 16:34:16,297 [INFO] monitor:   Analysis | job_701361524317571_742129376869207
+    Action     : retry
+    Confidence : medium
+    Root Cause : The error details are not provided, but it is likely a transient error.
+    Reasoning  : The error message is generic and does not specify a particular issue such as schema mismatch or bad credentials. Transient errors like network timeouts or cluster startup issues are common and can often be resolved by retrying.
+    Fix Hint   : none
+2026-05-03 16:34:20,034 [INFO] notifier: Email sent: 🚨 JOB Failure: Daily Sales ETL Job — RETRY → ['pappu.pink@yahoo.com']
+2026-05-03 16:34:24,248 [INFO] notifier: Email sent: ✅ Fix Applied: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 16:34:24,249 [INFO] monitor:   Fix applied | job_701361524317571_742129376869207 → retry attempt #1
+2026-05-03 16:35:11,970 [INFO] monitor: ─── Scan cycle @ 16:35:11 UTC ───────────────────────────────
+2026-05-03 16:35:12,797 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:36:12,311 [INFO] monitor: ─── Scan cycle @ 16:36:12 UTC ───────────────────────────────
+2026-05-03 16:36:13,141 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:37:12,651 [INFO] monitor: ─── Scan cycle @ 16:37:12 UTC ───────────────────────────────
+2026-05-03 16:37:13,501 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:38:12,998 [INFO] monitor: ─── Scan cycle @ 16:38:12 UTC ───────────────────────────────
+2026-05-03 16:38:13,843 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:39:13,340 [INFO] monitor: ─── Scan cycle @ 16:39:13 UTC ───────────────────────────────
+2026-05-03 16:39:14,156 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:40:13,686 [INFO] monitor: ─── Scan cycle @ 16:40:13 UTC ───────────────────────────────
+2026-05-03 16:40:14,588 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:41:14,025 [INFO] monitor: ─── Scan cycle @ 16:41:14 UTC ───────────────────────────────
+2026-05-03 16:41:14,852 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:42:14,367 [INFO] monitor: ─── Scan cycle @ 16:42:14 UTC ───────────────────────────────
+2026-05-03 16:42:15,190 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:43:14,708 [INFO] monitor: ─── Scan cycle @ 16:43:14 UTC ───────────────────────────────
+2026-05-03 16:43:15,530 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:44:15,060 [INFO] monitor: ─── Scan cycle @ 16:44:15 UTC ───────────────────────────────
+2026-05-03 16:44:16,669 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:45:15,434 [INFO] monitor: ─── Scan cycle @ 16:45:15 UTC ───────────────────────────────
+2026-05-03 16:45:16,268 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:46:15,783 [INFO] monitor: ─── Scan cycle @ 16:46:15 UTC ───────────────────────────────
+2026-05-03 16:46:16,660 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:47:16,117 [INFO] monitor: ─── Scan cycle @ 16:47:16 UTC ───────────────────────────────
+2026-05-03 16:47:16,945 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0

@@ -9,10 +9,28 @@ Flow per cycle:
   3. Pipelines   — scan all pipeline states
                    GET /api/2.0/pipelines  (paginated)
   4. For each failure:
+       - Deep error extraction (see _job_error for full strategy)
        - LLM analysis
        - Email notification
        - Auto-apply fix  (retry / repair)
        - OR escalation email if LLM says escalate / ignore
+
+ERROR EXTRACTION STRATEGY
+═══════════════════════════════════════════════════════════════════════
+For JOB failures:
+  1. Call GET /api/2.1/jobs/runs/get (fresh call — list API task details
+     are often incomplete / missing state_message)
+  2. Top-level state.state_message
+  3. Per-task state_message for every FAILED task  (most useful)
+  4. GET /api/2.1/jobs/runs/get-output → error + error_trace (full
+     Python/Scala/SQL stack trace — works for notebook / script tasks)
+  5. All four sources are combined so GPT-4o gets the richest possible
+     context. Empty sources are skipped.
+
+For PIPELINE failures:
+  1. GET /api/2.0/pipelines/{id}/updates/{uid} → cause string
+  2. GET /api/2.0/pipelines/{id}/events?filter=level='ERROR'
+     → full Spark exception stack traces from error.exceptions[]
 """
 from __future__ import annotations
 
@@ -20,7 +38,7 @@ import logging
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from typing import Dict, List, Optional, Set
+from typing import Dict, List, Optional, Set, Tuple
 
 from analyzer import Analyzer, Analysis
 from config import Config
@@ -29,6 +47,8 @@ from notifier import Notifier
 
 logger = logging.getLogger(__name__)
 
+
+# ── TTL-bounded dedup set ─────────────────────────────────────────────────────
 
 class _TTLSet:
     def __init__(self, ttl: int = 7200) -> None:
@@ -120,8 +140,9 @@ class Monitor:
             if key in self._seen:
                 continue
             self._seen.add(key)
-            error, trace = self._job_error(run_id, run)
-            failures.append(self._job_failure_dict(run, key, error, trace))
+            # Deep-extract error — pass lightweight run dict as hint only
+            error, trace, stdout_logs, notebook_output = self._extract_job_error(run_id, run)
+            failures.append(self._job_failure_dict(run, key, error, trace, stdout_logs, notebook_output))
             logger.warning("  [A] FAILED | job=%s run=%d", run.get("run_name", job_id), run_id)
 
         return failures
@@ -154,8 +175,8 @@ class Monitor:
             if key in self._seen:
                 continue
             self._seen.add(key)
-            error, trace = self._job_error(run_id, run)
-            failures.append(self._job_failure_dict(run, key, error, trace))
+            error, trace, stdout_logs, notebook_output = self._extract_job_error(run_id, run)
+            failures.append(self._job_failure_dict(run, key, error, trace, stdout_logs, notebook_output))
             logger.warning("  [B] Transition FAILED | job=%s run=%d", run.get("run_name", job_id), run_id)
 
         self._prev_active = active_now
@@ -222,10 +243,8 @@ class Monitor:
             self._notifier.send_escalation(failure, analysis)
             return
 
-        # Send failure alert email
         self._notifier.send_failure_alert(failure, analysis)
 
-        # Auto-apply fix
         action_taken = self._apply_fix(failure, analysis)
         if action_taken:
             self._notifier.send_fix_applied(failure, analysis, action_taken)
@@ -257,7 +276,7 @@ class Monitor:
                 return f"retry attempt #{state.count}"
 
             elif analysis.recommended_action == "repair" and ftype == "job":
-                failed_tasks = self._failed_tasks(failure)
+                failed_tasks = self._failed_task_keys(failure)
                 if failed_tasks:
                     self._db.repair_run(int(failure["run_id"]), failed_tasks)
                     return f"repair — tasks: {', '.join(failed_tasks)}"
@@ -272,7 +291,7 @@ class Monitor:
 
         return None
 
-    def _failed_tasks(self, failure: Dict) -> List[str]:
+    def _failed_task_keys(self, failure: Dict) -> List[str]:
         run_data = failure.get("_run_data") or {}
         tasks = run_data.get("tasks", [])
         if not tasks:
@@ -286,27 +305,146 @@ class Monitor:
             if t.get("state", {}).get("result_state") == "FAILED" and t.get("task_key")
         ]
 
-    # ── Helpers ───────────────────────────────────────────────────────────────
+    # =========================================================================
+    # ERROR EXTRACTION — the most important part for LLM quality
+    # =========================================================================
 
-    def _job_error(self, run_id: int, run: Dict):
-        error = run.get("state", {}).get("state_message", "")
-        tasks = run.get("tasks", [])
-        if tasks:
-            msgs = [
-                f"Task '{t.get('task_key')}': {t.get('state', {}).get('state_message', '')}"
-                for t in tasks if t.get("state", {}).get("result_state") == "FAILED"
-            ]
-            if msgs:
-                error = "\n".join(msgs)
-        trace = ""
+    def _extract_job_error(self, run_id: int, hint_run: Dict) -> Tuple[str, str, str, str]:
+        """
+        Build the richest possible error context for the LLM.
+
+        Strategy (in order):
+          1. Fresh GET /api/2.1/jobs/runs/get — the list API's task details
+             are often incomplete; a direct get call returns full state_message.
+          2. Top-level state.state_message (overall run error summary).
+          3. Per-task state_message for every FAILED task — this is usually
+             the most specific error (e.g. the actual Python exception).
+          4. GET /api/2.1/jobs/runs/get-output — full error_trace (stack trace).
+             Only works for notebook / Python script single-task jobs, but when
+             it works it gives the exact line number and exception type.
+
+        All non-empty pieces are joined and returned as (error, trace).
+        """
+        parts: List[str] = []
+        trace           = ""
+        stdout_logs     = ""
+        notebook_output = ""
+
+        # ── Step 1: Fresh run details ─────────────────────────────────────────
         try:
-            out = self._db.get_run_output(run_id)
-            trace = out.get("error_trace", "")
-            if not error:
-                error = out.get("error", "")
+            full_run = self._db.get_run(run_id)
+        except DatabricksAPIError as e:
+            logger.warning("  Could not fetch run details for %d: %s", run_id, e)
+            full_run = hint_run  # fall back to what we already have
+
+        # ── Step 2: Top-level state message ───────────────────────────────────
+        top_msg = full_run.get("state", {}).get("state_message", "").strip()
+        if top_msg:
+            parts.append(f"Run error: {top_msg}")
+
+        # ── Step 3: Per-task errors (most useful for multi-task jobs) ─────────
+        tasks = full_run.get("tasks", [])
+        failed_tasks = [
+            t for t in tasks
+            if t.get("state", {}).get("result_state") == "FAILED"
+        ]
+
+        if failed_tasks:
+            task_errors: List[str] = []
+            for t in failed_tasks:
+                task_key = t.get("task_key", "unknown_task")
+                task_msg = t.get("state", {}).get("state_message", "").strip()
+                if task_msg:
+                    task_errors.append(f"Task '{task_key}': {task_msg}")
+            if task_errors:
+                parts.append("Task-level errors:\n" + "\n".join(task_errors))
+        elif not tasks:
+            parts.append("(No per-task detail available — single-task or classic job)")
+
+        # ── Step 4: get_run_output — stderr (error_trace) + stdout (logs) ─────
+        # This is the richest source:
+        #   error       = short error message
+        #   error_trace = full Python / Scala / SQL stack trace (stderr)
+        #   logs        = everything printed to stdout during the run
+        #   notebook_output = cell outputs for notebook tasks
+        try:
+            output = self._db.get_run_output(run_id)
+
+            out_error   = output.get("error", "").strip()
+            out_trace   = output.get("error_trace", "").strip()
+            out_logs    = output.get("logs", "").strip()          # stdout
+            out_nb      = ""
+            nb_result   = output.get("notebook_output", {})
+            if isinstance(nb_result, dict):
+                out_nb = nb_result.get("result", "").strip()
+
+            if out_error and out_error not in top_msg:
+                parts.append(f"Output error: {out_error}")
+            if out_trace:
+                trace = out_trace
+            if out_logs:
+                stdout_logs = out_logs
+            if out_nb:
+                notebook_output = out_nb
+
         except DatabricksAPIError:
+            # get-output is not available for all task types — expected for
+            # multi-task jobs; per-task state_message (Step 3) covers those.
             pass
-        return error, trace
+
+        # ── Step 5: For multi-task jobs, try get_run_output per failed task ───
+        # Each task in a multi-task job has its own run_id (attempt_number=0).
+        # Calling get_run_output with the task's run_id retrieves task-level
+        # stdout/stderr which is often unavailable on the parent run.
+        if failed_tasks and not trace and not stdout_logs:
+            task_outputs: List[str] = []
+            task_stdouts: List[str] = []
+            for t in failed_tasks[:3]:  # limit to first 3 failed tasks
+                task_run_id = t.get("run_id")
+                task_key    = t.get("task_key", "unknown")
+                if not task_run_id:
+                    continue
+                try:
+                    tout = self._db.get_run_output(int(task_run_id))
+                    t_trace  = tout.get("error_trace", "").strip()
+                    t_logs   = tout.get("logs", "").strip()
+                    t_error  = tout.get("error", "").strip()
+                    t_nb     = ""
+                    t_nb_res = tout.get("notebook_output", {})
+                    if isinstance(t_nb_res, dict):
+                        t_nb = t_nb_res.get("result", "").strip()
+
+                    if t_trace:
+                        task_outputs.append(f"[task: {task_key}] stderr:\n{t_trace}")
+                    elif t_error:
+                        task_outputs.append(f"[task: {task_key}] error: {t_error}")
+                    if t_logs:
+                        task_stdouts.append(f"[task: {task_key}] stdout:\n{t_logs}")
+                    if t_nb:
+                        task_stdouts.append(f"[task: {task_key}] notebook output:\n{t_nb}")
+                except DatabricksAPIError:
+                    pass
+
+            if task_outputs:
+                trace = "\n\n".join(task_outputs)
+            if task_stdouts:
+                stdout_logs = "\n\n".join(task_stdouts)
+
+        error = "\n\n".join(parts)
+
+        # ── Diagnostic log ────────────────────────────────────────────────────
+        logger.info(
+            "  Extracted for run %d | error=%d chars | stderr=%d chars | stdout=%d chars | tasks_failed=%d",
+            run_id, len(error), len(trace), len(stdout_logs), len(failed_tasks),
+        )
+        if not error and not trace and not stdout_logs:
+            logger.warning(
+                "  ⚠️  All log sources empty for run %d. "
+                "Verify the Databricks token has CAN_VIEW permission on the job.",
+                run_id,
+            )
+
+        return error, trace, stdout_logs, notebook_output
 
     def _pipeline_cause(self, pid: str, update_id: str) -> str:
         try:
@@ -315,20 +453,37 @@ class Monitor:
             return ""
 
     def _pipeline_events(self, pid: str) -> str:
+        """
+        Fetch ERROR-level pipeline events.
+        error.exceptions[] contains the full Spark stack trace — far richer
+        than the brief cause string in the update record.
+        """
         try:
             events = self._db.list_pipeline_events(pid, max_results=10)
             lines = []
             for e in events:
-                msg = e.get("message", "")
+                msg = e.get("message", "").strip()
                 excs = e.get("error", {}).get("exceptions", [])
-                exc_text = "\n".join(x.get("message", "") for x in excs if x.get("message"))
-                lines.append(f"{msg}\n{exc_text}".strip())
-            return "\n\n".join(lines)
-        except DatabricksAPIError:
+                exc_text = "\n".join(
+                    x.get("message", "").strip()
+                    for x in excs if x.get("message", "").strip()
+                )
+                combined = "\n".join(filter(None, [msg, exc_text]))
+                if combined:
+                    lines.append(combined)
+            result = "\n\n".join(lines)
+            if result:
+                logger.info("  Pipeline events extracted for %s | len=%d", pid, len(result))
+            else:
+                logger.warning("  ⚠️  No pipeline error events found for %s", pid)
+            return result
+        except DatabricksAPIError as e:
+            logger.warning("  Pipeline events fetch failed for %s: %s", pid, e)
             return ""
 
     @staticmethod
-    def _job_failure_dict(run: Dict, key: str, error: str, trace: str) -> Dict:
+    def _job_failure_dict(run: Dict, key: str, error: str, trace: str,
+                          stdout_logs: str = "", notebook_output: str = "") -> Dict:
         return {
             "type": "job",
             "job_id": int(run["job_id"]),
@@ -337,6 +492,8 @@ class Monitor:
             "failure_key": key,
             "error": error,
             "error_trace": trace,
+            "stdout_logs": stdout_logs,
+            "notebook_output": notebook_output,
             "run_url": run.get("run_page_url", ""),
             "_run_data": run,
         }
