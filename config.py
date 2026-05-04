@@ -39,6 +39,17 @@ class Config:
     # ── Misc ──────────────────────────────────────────────────────────────────
     log_file: str = "/var/log/pipeline-agent.log"
 
+
+    # ── Stale job / pipeline monitoring ───────────────────────────────────────
+    stale_job_warn_min: int = 60          # alert when job runs longer than this
+    stale_job_critical_min: int = 120     # second (critical) alert threshold
+    stale_task_warn_min: int = 45         # alert when a single task hangs
+    stale_pending_warn_min: int = 15      # alert when stuck in PENDING/BLOCKED
+    stale_terminating_min: int = 10       # alert when stuck in TERMINATING
+    stale_pipeline_min: int = 20          # alert when DLT stuck in INITIALIZING
+    stale_realert_min: int = 30           # re-alert interval for persistent issues
+    stale_auto_cancel: bool = False       # auto-cancel abandoned runs (careful!)
+
     # Derived flag
     email_enabled: bool = False
 
@@ -60,6 +71,14 @@ class Config:
             smtp_password=os.getenv("SMTP_PASSWORD", ""),
             smtp_from=os.getenv("SMTP_FROM", ""),
             email_to=_csv("EMAIL_TO"),
+            stale_job_warn_min=int(os.getenv("STALE_JOB_WARN_MIN", "60")),
+            stale_job_critical_min=int(os.getenv("STALE_JOB_CRITICAL_MIN", "120")),
+            stale_task_warn_min=int(os.getenv("STALE_TASK_WARN_MIN", "45")),
+            stale_pending_warn_min=int(os.getenv("STALE_PENDING_WARN_MIN", "15")),
+            stale_terminating_min=int(os.getenv("STALE_TERMINATING_MIN", "10")),
+            stale_pipeline_min=int(os.getenv("STALE_PIPELINE_MIN", "20")),
+            stale_realert_min=int(os.getenv("STALE_REALERT_MIN", "30")),
+            stale_auto_cancel=os.getenv("STALE_AUTO_CANCEL", "false").lower() == "true",
             log_file=os.getenv("LOG_FILE", "/var/log/pipeline-agent.log"),
         )
 

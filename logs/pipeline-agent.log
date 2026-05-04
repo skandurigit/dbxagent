@@ -289,3 +289,1387 @@
 2026-05-03 16:46:16,660 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
 2026-05-03 16:47:16,117 [INFO] monitor: ─── Scan cycle @ 16:47:16 UTC ───────────────────────────────
 2026-05-03 16:47:16,945 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:48:39,677 [INFO] agent: ========================================================
+2026-05-03 16:48:39,678 [INFO] agent:   Databricks 24/7 Reliability Agent
+2026-05-03 16:48:39,678 [INFO] agent: ========================================================
+2026-05-03 16:48:39,678 [INFO] agent:   Host     : https://dbc-40d2e8f5-733e.cloud.databricks.com
+2026-05-03 16:48:39,678 [INFO] agent:   Poll     : every 60s
+2026-05-03 16:48:39,679 [INFO] agent:   Lookback : 60 min on first scan
+2026-05-03 16:48:39,679 [INFO] agent:   Email    : ✓ smtp.gmail.com
+2026-05-03 16:48:39,679 [INFO] agent: ========================================================
+2026-05-03 16:48:39,691 [INFO] agent: Monitoring ALL jobs and pipelines. Press Ctrl+C to stop.
+
+2026-05-03 16:48:39,692 [INFO] monitor: ─── Scan cycle @ 16:48:39 UTC ───────────────────────────────
+2026-05-03 16:48:42,178 [INFO] monitor:   Extracted for run 735490672779996 | error=219 chars | stderr=1351 chars | stdout=0 chars | tasks_failed=1
+2026-05-03 16:48:42,179 [WARNING] monitor:   [A] FAILED | job=Daily Sales ETL Job run=735490672779996
+2026-05-03 16:48:44,230 [INFO] monitor:   Extracted for run 742129376869207 | error=304 chars | stderr=2704 chars | stdout=0 chars | tasks_failed=2
+2026-05-03 16:48:44,231 [WARNING] monitor:   [A] FAILED | job=Daily Sales ETL Job run=742129376869207
+2026-05-03 16:48:46,932 [INFO] monitor:   Extracted for run 783263996779730 | error=389 chars | stderr=105124 chars | stdout=0 chars | tasks_failed=3
+2026-05-03 16:48:46,932 [WARNING] monitor:   [A] FAILED | job=Daily Sales ETL Job run=783263996779730
+2026-05-03 16:48:49,570 [INFO] monitor:   Extracted for run 44710682076355 | error=389 chars | stderr=105124 chars | stdout=0 chars | tasks_failed=3
+2026-05-03 16:48:49,570 [WARNING] monitor:   [A] FAILED | job=Daily Sales ETL Job run=44710682076355
+2026-05-03 16:48:50,535 [INFO] monitor:   Extracted for run 742943792458031 | error=456 chars | stderr=241 chars | stdout=0 chars | tasks_failed=1
+2026-05-03 16:48:50,535 [WARNING] monitor:   [A] FAILED | job=OOM Test Job - Memory Exhaustion (Will Fail First) run=742943792458031
+2026-05-03 16:48:51,537 [INFO] monitor:   Extracted for run 377166334452218 | error=456 chars | stderr=241 chars | stdout=0 chars | tasks_failed=1
+2026-05-03 16:48:51,537 [WARNING] monitor:   [A] FAILED | job=OOM Test Job - Memory Exhaustion (Will Fail First) run=377166334452218
+2026-05-03 16:48:52,776 [INFO] monitor:   Pipeline events extracted for 60aa8671-a7af-41ad-bd60-b09fbf3df730 | len=1490
+2026-05-03 16:48:52,777 [WARNING] monitor:   [P] FAILED | name=POC - Workspace A - Bronze Pipeline update=f933974d-79c6-420f-9af9-3569e1734ecf
+2026-05-03 16:48:53,439 [INFO] monitor:   Pipeline events extracted for 8bf0fd99-d478-4f63-9fe6-f02eee14d7e0 | len=1865
+2026-05-03 16:48:53,440 [WARNING] monitor:   [P] FAILED | name=Test Pipeline 6 - Retry Success (Fails First, Fixed on Retry) update=d82bcc81-f8db-4303-a8a6-d6b70940dfb2
+2026-05-03 16:48:54,111 [INFO] monitor:   Pipeline events extracted for e5a7e9d4-913f-4688-ba01-9e61146fca4f | len=3262
+2026-05-03 16:48:54,111 [WARNING] monitor:   [P] FAILED | name=Test Pipeline 1 - Successful Bronze to Silver update=06cef959-915f-436f-b344-c79615f289ec
+2026-05-03 16:48:54,817 [INFO] monitor:   Pipeline events extracted for e80b2fde-95dd-46c7-8bc8-7f74e7a8dde2 | len=5369
+2026-05-03 16:48:54,818 [WARNING] monitor:   [P] FAILED | name=POC - Workspace B - Analytics Pipeline update=85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+2026-05-03 16:48:54,818 [INFO] monitor:   Jobs (completed): 6  |  Jobs (transitions): 0  |  Pipelines: 4  |  Total: 10
+2026-05-03 16:48:54,818 [INFO] analyzer:   Sending to LLM | key=job_701361524317571_735490672779996
+    error   : Run error: Task notebook_task_Simple_PySpark_ETL failed with message: Workload failed, see run output for details.  Task
+    stderr  : [task: notebook_task_Simple_PySpark_ETL] stderr: [0;31m----------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-03 16:48:57,622 [INFO] analyzer: LLM → escalate (high) | ValueError: Data Quality Error due to corrupted records with invalid amounts.
+2026-05-03 16:48:57,622 [INFO] monitor:   Analysis | job_701361524317571_735490672779996
+    Action     : escalate
+    Confidence : high
+    Root Cause : ValueError: Data Quality Error due to corrupted records with invalid amounts.
+    Reasoning  : The error is a ValueError explicitly raised in the code due to data quality issues, indicating corrupted records with invalid amounts. This is a deterministic error that requires data remediation before the job can succeed, as stated in the error message.
+    Fix Hint   : none
+2026-05-03 16:49:01,490 [INFO] notifier: Email sent: ⚠️ Escalation Required: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 16:49:01,490 [INFO] analyzer:   Sending to LLM | key=job_701361524317571_742129376869207
+    error   : Run error: Task notebook_task_Simple_PySpark_ETL failed with message: Workload failed, see run output for details.  Task
+    stderr  : [task: notebook_task_Simple_PySpark_ETL] stderr: [0;31m----------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-03 16:49:03,220 [INFO] analyzer: LLM → escalate (high) | ValueError: Data Quality Error due to corrupted records with invalid amounts.
+2026-05-03 16:49:03,221 [INFO] monitor:   Analysis | job_701361524317571_742129376869207
+    Action     : escalate
+    Confidence : high
+    Root Cause : ValueError: Data Quality Error due to corrupted records with invalid amounts.
+    Reasoning  : The error is a ValueError explicitly raised in the code due to data quality issues, specifically 2 corrupted records with invalid amounts. This is a deterministic error indicating that the source data needs remediation before the job can succeed.
+    Fix Hint   : none
+2026-05-03 16:49:07,069 [INFO] notifier: Email sent: ⚠️ Escalation Required: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 16:49:07,069 [INFO] analyzer:   Sending to LLM | key=job_701361524317571_783263996779730
+    error   : Run error: Task notebook_task_Simple_PySpark_ETL failed with message: Workload failed, see run output for details.  Task
+    stderr  : [task: notebook_task_Simple_PySpark_ETL] stderr: [0;31m----------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-03 16:49:09,477 [INFO] analyzer: LLM → escalate (high) | ExecutionError: [DBFS_DISABLED] Public DBFS root is disabled. Access is denied on path: /tmp/etl_job_flag.txt
+2026-05-03 16:49:09,477 [INFO] monitor:   Analysis | job_701361524317571_783263996779730
+    Action     : escalate
+    Confidence : high
+    Root Cause : ExecutionError: [DBFS_DISABLED] Public DBFS root is disabled. Access is denied on path: /tmp/etl_job_flag.txt
+    Reasoning  : The error trace indicates an ExecutionError caused by attempting to write to a DBFS path that is disabled, specifically '/tmp/etl_job_flag.txt'. This is a configuration issue where the public DBFS root is not enabled, leading to access denial.
+    Fix Hint   : Enable public DBFS root or change the path to a permitted location.
+2026-05-03 16:49:14,645 [INFO] notifier: Email sent: ⚠️ Escalation Required: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 16:49:14,645 [INFO] analyzer:   Sending to LLM | key=job_701361524317571_44710682076355
+    error   : Run error: Task notebook_task_Simple_PySpark_ETL failed with message: Workload failed, see run output for details.  Task
+    stderr  : [task: notebook_task_Simple_PySpark_ETL] stderr: [0;31m----------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-03 16:49:17,119 [INFO] analyzer: LLM → escalate (high) | ExecutionError: [DBFS_DISABLED] Public DBFS root is disabled. Access is denied on path: /tmp/etl_job_flag.txt
+2026-05-03 16:49:17,120 [INFO] monitor:   Analysis | job_701361524317571_44710682076355
+    Action     : escalate
+    Confidence : high
+    Root Cause : ExecutionError: [DBFS_DISABLED] Public DBFS root is disabled. Access is denied on path: /tmp/etl_job_flag.txt
+    Reasoning  : The error trace indicates an ExecutionError due to the public DBFS root being disabled, which results in access being denied to the specified path. This is a configuration issue that cannot be resolved by simply retrying the job.
+    Fix Hint   : Enable access to the specified DBFS path or modify the job to use a different storage location that is accessible.
+2026-05-03 16:49:22,033 [INFO] notifier: Email sent: ⚠️ Escalation Required: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 16:49:22,033 [INFO] analyzer:   Sending to LLM | key=job_750755384096813_742943792458031
+    error   : Run error: Task oom_test_task failed with message: Unexpected failure while fetching notebook at /Users/pappu.pink@yahoo
+    stderr  : [task: oom_test_task] error: Run failed with error message  Unexpected failure while fetching notebook at /Users/pappu.p
+    stdout  : ⚠️ empty
+2026-05-03 16:49:29,022 [INFO] analyzer: LLM → escalate (high) | Unexpected failure while fetching notebook: The Jupyter file may not be a valid notebook or may be an unsupported version.
+2026-05-03 16:49:29,022 [INFO] monitor:   Analysis | job_750755384096813_742943792458031
+    Action     : escalate
+    Confidence : high
+    Root Cause : Unexpected failure while fetching notebook: The Jupyter file may not be a valid notebook or may be an unsupported version.
+    Reasoning  : The error message indicates that the task failed because the notebook could not be fetched due to it being invalid or an unsupported version. This is a deterministic issue related to the notebook file itself, not a transient infrastructure problem.
+    Fix Hint   : Ensure the notebook at /Users/pappu.pink@yahoo.com/OOM Test Job - Memory Issue is a valid Jupyter notebook and compatible with the current Databricks runtime.
+2026-05-03 16:49:32,615 [INFO] notifier: Email sent: ⚠️ Escalation Required: OOM Test Job - Memory Exhaustion (Will Fail First) → ['pappu.pink@yahoo.com']
+2026-05-03 16:49:32,615 [INFO] analyzer:   Sending to LLM | key=job_750755384096813_377166334452218
+    error   : Run error: Task oom_test_task failed with message: Unexpected failure while fetching notebook at /Users/pappu.pink@yahoo
+    stderr  : [task: oom_test_task] error: Run failed with error message  Unexpected failure while fetching notebook at /Users/pappu.p
+    stdout  : ⚠️ empty
+2026-05-03 16:49:34,890 [INFO] analyzer: LLM → escalate (high) | Unexpected failure while fetching notebook: The Jupyter file may not be a valid notebook or may be an unsupported version.
+2026-05-03 16:49:34,891 [INFO] monitor:   Analysis | job_750755384096813_377166334452218
+    Action     : escalate
+    Confidence : high
+    Root Cause : Unexpected failure while fetching notebook: The Jupyter file may not be a valid notebook or may be an unsupported version.
+    Reasoning  : The error message indicates that the task failed because the notebook could not be fetched due to it being invalid or an unsupported version. This is a deterministic issue related to the notebook file itself, not a transient infrastructure problem.
+    Fix Hint   : Ensure the notebook at /Users/pappu.pink@yahoo.com/OOM Test Job - Memory Issue is a valid Jupyter notebook and is compatible with the current Databricks runtime.
+2026-05-03 16:49:39,134 [INFO] notifier: Email sent: ⚠️ Escalation Required: OOM Test Job - Memory Exhaustion (Will Fail First) → ['pappu.pink@yahoo.com']
+2026-05-03 16:49:39,134 [INFO] analyzer:   Sending to LLM | key=pipeline_60aa8671-a7af-41ad-bd60-b09fbf3df730_f933974d-79c6-420f-9af9-3569e1734ecf
+    error   : USER_ACTION
+    stderr  : Update f93397 has failed. Failed to analyze flow 'workspace.workspace_a_bronze.bronze_customer_transactions' and 1 other
+    stdout  : ⚠️ empty
+2026-05-03 16:49:40,998 [INFO] analyzer: LLM → escalate (high) | PySparkTypeError: Argument `col` should be a Column or str, got float.
+2026-05-03 16:49:40,998 [INFO] monitor:   Analysis | pipeline_60aa8671-a7af-41ad-bd60-b09fbf3df730_f933974d-79c6-420f-9af9-3569e1734ecf
+    Action     : escalate
+    Confidence : high
+    Root Cause : PySparkTypeError: Argument `col` should be a Column or str, got float.
+    Reasoning  : The error is a PySparkTypeError indicating that a float was passed where a Column or string was expected. This occurred in both 'bronze_customer_transactions' and 'bronze_orders' flows, as shown in the stack trace. This is a code issue that requires correction in the pipeline logic.
+    Fix Hint   : Ensure that the values passed to PySpark functions are of the correct type, such as using lit() to convert a float to a Column.
+2026-05-03 16:49:44,555 [INFO] notifier: Email sent: ⚠️ Escalation Required: POC - Workspace A - Bronze Pipeline → ['pappu.pink@yahoo.com']
+2026-05-03 16:49:44,556 [INFO] analyzer:   Sending to LLM | key=pipeline_8bf0fd99-d478-4f63-9fe6-f02eee14d7e0_d82bcc81-f8db-4303-a8a6-d6b70940dfb2
+    error   : API_CALL
+    stderr  : Update d82bcc has failed. Failed to analyze flow 'workspace.dlt_retry_test.bronze_taxi_data'. Traceback (most recent cal
+    stdout  : ⚠️ empty
+2026-05-03 16:49:46,507 [INFO] analyzer: LLM → escalate (high) | pyspark.errors.exceptions.captured.AnalysisException: Unresolved column 'invalid_column_name'.
+2026-05-03 16:49:46,508 [INFO] monitor:   Analysis | pipeline_8bf0fd99-d478-4f63-9fe6-f02eee14d7e0_d82bcc81-f8db-4303-a8a6-d6b70940dfb2
+    Action     : escalate
+    Confidence : high
+    Root Cause : pyspark.errors.exceptions.captured.AnalysisException: Unresolved column 'invalid_column_name'.
+    Reasoning  : The error is due to an AnalysisException caused by a reference to a non-existent column 'invalid_column_name' in the DataFrame operation. The stack trace clearly indicates that this column cannot be resolved, suggesting a schema mismatch or typo in the column name.
+    Fix Hint   : Correct the column name in the filter operation to one of the existing columns: `fare_amount`, `pickup_zip`, `dropoff_zip`, `trip_distance`, `tpep_dropoff_datetime`.
+2026-05-03 16:49:50,197 [INFO] notifier: Email sent: ⚠️ Escalation Required: Test Pipeline 6 - Retry Success (Fails First, Fixed on Retry) → ['pappu.pink@yahoo.com']
+2026-05-03 16:49:50,198 [INFO] analyzer:   Sending to LLM | key=pipeline_e5a7e9d4-913f-4688-ba01-9e61146fca4f_06cef959-915f-436f-b344-c79615f289ec
+    error   : RETRY_ON_FAILURE
+    stderr  : Update 06cef9 is FAILED. [NO_TABLES_IN_PIPELINE] Pipelines are expected to have at least one table defined but no tables
+    stdout  : ⚠️ empty
+2026-05-03 16:49:51,940 [INFO] analyzer: LLM → escalate (high) | NO_TABLES_IN_PIPELINE error indicating no tables were defined in the pipeline.
+2026-05-03 16:49:51,940 [INFO] monitor:   Analysis | pipeline_e5a7e9d4-913f-4688-ba01-9e61146fca4f_06cef959-915f-436f-b344-c79615f289ec
+    Action     : escalate
+    Confidence : high
+    Root Cause : NO_TABLES_IN_PIPELINE error indicating no tables were defined in the pipeline.
+    Reasoning  : The error message '[NO_TABLES_IN_PIPELINE]' clearly states that the pipeline is expected to have at least one table defined, but none were found. This is a configuration or code issue where the pipeline lacks table definitions such as CREATE MATERIALIZED VIEW in SQL or @dlt.table in Python.
+    Fix Hint   : Ensure that the pipeline includes at least one table definition using CREATE MATERIALIZED VIEW in SQL or @dlt.table in Python.
+2026-05-03 16:49:55,511 [INFO] notifier: Email sent: ⚠️ Escalation Required: Test Pipeline 1 - Successful Bronze to Silver → ['pappu.pink@yahoo.com']
+2026-05-03 16:49:55,512 [INFO] analyzer:   Sending to LLM | key=pipeline_e80b2fde-95dd-46c7-8bc8-7f74e7a8dde2_85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+    error   : USER_ACTION
+    stderr  : Update 85316b has failed. Failed to analyze flow 'workspace.workspace_b_silver.silver_enriched_transactions'. Traceback 
+    stdout  : ⚠️ empty
+2026-05-03 16:49:58,769 [INFO] analyzer: LLM → escalate (high) | pyspark.errors.exceptions.captured.AnalysisException: [TABLE_OR_VIEW_NOT_FOUND] The table or view `workspace`.`workspace_a_bronze`.`bronze_customer_transactions` cannot be found.
+2026-05-03 16:49:58,770 [INFO] monitor:   Analysis | pipeline_e80b2fde-95dd-46c7-8bc8-7f74e7a8dde2_85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+    Action     : escalate
+    Confidence : high
+    Root Cause : pyspark.errors.exceptions.captured.AnalysisException: [TABLE_OR_VIEW_NOT_FOUND] The table or view `workspace`.`workspace_a_bronze`.`bronze_customer_transactions` cannot be found.
+    Reasoning  : The error traceback indicates an AnalysisException due to a missing table `workspace.workspace_a_bronze.bronze_customer_transactions`. This is a deterministic error related to a missing table, which cannot be resolved by retrying the pipeline.
+    Fix Hint   : Ensure that the table `workspace.workspace_a_bronze.bronze_customer_transactions` exists and is accessible in the specified schema and catalog.
+2026-05-03 16:50:02,341 [INFO] notifier: Email sent: ⚠️ Escalation Required: POC - Workspace B - Analytics Pipeline → ['pappu.pink@yahoo.com']
+2026-05-03 16:50:02,342 [INFO] monitor: ─── Scan cycle @ 16:50:02 UTC ───────────────────────────────
+2026-05-03 16:50:03,168 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:51:02,693 [INFO] monitor: ─── Scan cycle @ 16:51:02 UTC ───────────────────────────────
+2026-05-03 16:51:03,516 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:52:03,040 [INFO] monitor: ─── Scan cycle @ 16:52:03 UTC ───────────────────────────────
+2026-05-03 16:52:03,861 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:53:03,395 [INFO] monitor: ─── Scan cycle @ 16:53:03 UTC ───────────────────────────────
+2026-05-03 16:53:04,222 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:54:03,751 [INFO] monitor: ─── Scan cycle @ 16:54:03 UTC ───────────────────────────────
+2026-05-03 16:54:04,588 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:55:04,108 [INFO] monitor: ─── Scan cycle @ 16:55:04 UTC ───────────────────────────────
+2026-05-03 16:55:04,944 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:56:04,449 [INFO] monitor: ─── Scan cycle @ 16:56:04 UTC ───────────────────────────────
+2026-05-03 16:56:05,289 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:57:04,809 [INFO] monitor: ─── Scan cycle @ 16:57:04 UTC ───────────────────────────────
+2026-05-03 16:57:05,627 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:58:05,156 [INFO] monitor: ─── Scan cycle @ 16:58:05 UTC ───────────────────────────────
+2026-05-03 16:58:05,974 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 16:59:05,505 [INFO] monitor: ─── Scan cycle @ 16:59:05 UTC ───────────────────────────────
+2026-05-03 16:59:06,326 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:00:06,231 [INFO] monitor: ─── Scan cycle @ 17:00:06 UTC ───────────────────────────────
+2026-05-03 17:00:07,120 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:01:06,577 [INFO] monitor: ─── Scan cycle @ 17:01:06 UTC ───────────────────────────────
+2026-05-03 17:01:07,409 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:02:06,924 [INFO] monitor: ─── Scan cycle @ 17:02:06 UTC ───────────────────────────────
+2026-05-03 17:02:07,752 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:02:50,734 [INFO] agent: Shutdown signal received — stopping after current cycle…
+2026-05-03 17:03:02,156 [INFO] agent: ========================================================
+2026-05-03 17:03:02,157 [INFO] agent:   Databricks 24/7 Reliability Agent
+2026-05-03 17:03:02,157 [INFO] agent: ========================================================
+2026-05-03 17:03:02,157 [INFO] agent:   Host     : https://dbc-40d2e8f5-733e.cloud.databricks.com
+2026-05-03 17:03:02,157 [INFO] agent:   Poll     : every 60s
+2026-05-03 17:03:02,158 [INFO] agent:   Lookback : 60 min on first scan
+2026-05-03 17:03:02,158 [INFO] agent:   Email    : ✓ smtp.gmail.com
+2026-05-03 17:03:02,158 [INFO] agent: ========================================================
+2026-05-03 17:03:02,171 [INFO] agent: Monitoring ALL jobs and pipelines. Press Ctrl+C to stop.
+
+2026-05-03 17:03:02,171 [INFO] monitor: ─── Scan cycle @ 17:03:02 UTC ───────────────────────────────
+2026-05-03 17:03:04,533 [INFO] monitor:   Extracted for run 735490672779996 | error=219 chars | stderr=1351 chars | stdout=0 chars | tasks_failed=1
+2026-05-03 17:03:04,533 [WARNING] monitor:   [A] FAILED | job=Daily Sales ETL Job run=735490672779996
+2026-05-03 17:03:06,570 [INFO] monitor:   Extracted for run 742129376869207 | error=304 chars | stderr=2704 chars | stdout=0 chars | tasks_failed=2
+2026-05-03 17:03:06,570 [WARNING] monitor:   [A] FAILED | job=Daily Sales ETL Job run=742129376869207
+2026-05-03 17:03:09,149 [INFO] monitor:   Extracted for run 783263996779730 | error=389 chars | stderr=105124 chars | stdout=0 chars | tasks_failed=3
+2026-05-03 17:03:09,149 [WARNING] monitor:   [A] FAILED | job=Daily Sales ETL Job run=783263996779730
+2026-05-03 17:03:11,632 [INFO] monitor:   Extracted for run 44710682076355 | error=389 chars | stderr=105124 chars | stdout=0 chars | tasks_failed=3
+2026-05-03 17:03:11,632 [WARNING] monitor:   [A] FAILED | job=Daily Sales ETL Job run=44710682076355
+2026-05-03 17:03:12,814 [INFO] monitor:   Pipeline events extracted for 60aa8671-a7af-41ad-bd60-b09fbf3df730 | len=1490
+2026-05-03 17:03:12,814 [WARNING] monitor:   [P] FAILED | name=POC - Workspace A - Bronze Pipeline update=f933974d-79c6-420f-9af9-3569e1734ecf
+2026-05-03 17:03:13,438 [INFO] monitor:   Pipeline events extracted for 8bf0fd99-d478-4f63-9fe6-f02eee14d7e0 | len=1865
+2026-05-03 17:03:13,439 [WARNING] monitor:   [P] FAILED | name=Test Pipeline 6 - Retry Success (Fails First, Fixed on Retry) update=d82bcc81-f8db-4303-a8a6-d6b70940dfb2
+2026-05-03 17:03:14,087 [INFO] monitor:   Pipeline events extracted for e5a7e9d4-913f-4688-ba01-9e61146fca4f | len=3262
+2026-05-03 17:03:14,088 [WARNING] monitor:   [P] FAILED | name=Test Pipeline 1 - Successful Bronze to Silver update=06cef959-915f-436f-b344-c79615f289ec
+2026-05-03 17:03:14,717 [INFO] monitor:   Pipeline events extracted for e80b2fde-95dd-46c7-8bc8-7f74e7a8dde2 | len=5369
+2026-05-03 17:03:14,718 [WARNING] monitor:   [P] FAILED | name=POC - Workspace B - Analytics Pipeline update=85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+2026-05-03 17:03:14,718 [INFO] monitor:   Jobs (completed): 4  |  Jobs (transitions): 0  |  Pipelines: 4  |  Total: 8
+2026-05-03 17:03:14,718 [INFO] analyzer:   Sending to LLM | key=job_701361524317571_735490672779996
+    error   : Run error: Task notebook_task_Simple_PySpark_ETL failed with message: Workload failed, see run output for details.  Task
+    stderr  : [task: notebook_task_Simple_PySpark_ETL] stderr: [0;31m----------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-03 17:03:16,823 [INFO] analyzer: LLM → escalate (high) | ValueError: Data Quality Error due to corrupted records with invalid amounts.
+2026-05-03 17:03:16,823 [INFO] monitor:   Analysis | job_701361524317571_735490672779996
+    Action     : escalate
+    Confidence : high
+    Root Cause : ValueError: Data Quality Error due to corrupted records with invalid amounts.
+    Reasoning  : The error is a ValueError explicitly raised in the code due to data quality issues, indicating that there are corrupted records with invalid amounts. This is a deterministic error related to the data itself, not a transient infrastructure issue.
+    Fix Hint   : none
+2026-05-03 17:03:20,316 [INFO] notifier: Email sent: ⚠️ Escalation Required: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 17:03:20,317 [INFO] analyzer:   Sending to LLM | key=job_701361524317571_742129376869207
+    error   : Run error: Task notebook_task_Simple_PySpark_ETL failed with message: Workload failed, see run output for details.  Task
+    stderr  : [task: notebook_task_Simple_PySpark_ETL] stderr: [0;31m----------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-03 17:03:22,046 [INFO] analyzer: LLM → escalate (high) | ValueError: Data Quality Error due to corrupted records with invalid amounts.
+2026-05-03 17:03:22,046 [INFO] monitor:   Analysis | job_701361524317571_742129376869207
+    Action     : escalate
+    Confidence : high
+    Root Cause : ValueError: Data Quality Error due to corrupted records with invalid amounts.
+    Reasoning  : The error is a ValueError explicitly raised in the code due to data quality issues, specifically 2 corrupted records with invalid amounts. This is a deterministic error caused by the source data, which needs to be fixed before the job can succeed.
+    Fix Hint   : none
+2026-05-03 17:03:25,826 [INFO] notifier: Email sent: ⚠️ Escalation Required: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 17:03:25,826 [INFO] analyzer:   Sending to LLM | key=job_701361524317571_783263996779730
+    error   : Run error: Task notebook_task_Simple_PySpark_ETL failed with message: Workload failed, see run output for details.  Task
+    stderr  : [task: notebook_task_Simple_PySpark_ETL] stderr: [0;31m----------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-03 17:03:30,073 [INFO] analyzer: LLM → escalate (high) | ExecutionError: [DBFS_DISABLED] Public DBFS root is disabled. Access is denied on path: /tmp/etl_job_flag.txt
+2026-05-03 17:03:30,073 [INFO] monitor:   Analysis | job_701361524317571_783263996779730
+    Action     : escalate
+    Confidence : high
+    Root Cause : ExecutionError: [DBFS_DISABLED] Public DBFS root is disabled. Access is denied on path: /tmp/etl_job_flag.txt
+    Reasoning  : The error trace indicates an ExecutionError caused by a disabled public DBFS root, which results in access being denied to the specified path. This is a configuration issue that cannot be resolved by simply retrying the job.
+    Fix Hint   : Enable access to the specified DBFS path or modify the job to use an accessible path.
+2026-05-03 17:03:33,706 [INFO] notifier: Email sent: ⚠️ Escalation Required: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 17:03:33,707 [INFO] analyzer:   Sending to LLM | key=job_701361524317571_44710682076355
+    error   : Run error: Task notebook_task_Simple_PySpark_ETL failed with message: Workload failed, see run output for details.  Task
+    stderr  : [task: notebook_task_Simple_PySpark_ETL] stderr: [0;31m----------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-03 17:03:50,513 [INFO] analyzer: LLM → escalate (high) | ExecutionError: [DBFS_DISABLED] Public DBFS root is disabled. Access is denied on path: /tmp/etl_job_flag.txt
+2026-05-03 17:03:50,514 [INFO] monitor:   Analysis | job_701361524317571_44710682076355
+    Action     : escalate
+    Confidence : high
+    Root Cause : ExecutionError: [DBFS_DISABLED] Public DBFS root is disabled. Access is denied on path: /tmp/etl_job_flag.txt
+    Reasoning  : The error trace indicates an ExecutionError caused by a disabled public DBFS root, which results in access being denied to the specified path. This is a configuration issue that cannot be resolved by simply retrying the job.
+    Fix Hint   : Enable access to the public DBFS root or modify the job to use a different storage path that is accessible.
+2026-05-03 17:03:54,088 [INFO] notifier: Email sent: ⚠️ Escalation Required: Daily Sales ETL Job → ['pappu.pink@yahoo.com']
+2026-05-03 17:03:54,089 [INFO] analyzer:   Sending to LLM | key=pipeline_60aa8671-a7af-41ad-bd60-b09fbf3df730_f933974d-79c6-420f-9af9-3569e1734ecf
+    error   : USER_ACTION
+    stderr  : Update f93397 has failed. Failed to analyze flow 'workspace.workspace_a_bronze.bronze_customer_transactions' and 1 other
+    stdout  : ⚠️ empty
+2026-05-03 17:03:58,895 [INFO] analyzer: LLM → escalate (high) | PySparkTypeError: Argument `col` should be a Column or str, got float.
+2026-05-03 17:03:58,896 [INFO] monitor:   Analysis | pipeline_60aa8671-a7af-41ad-bd60-b09fbf3df730_f933974d-79c6-420f-9af9-3569e1734ecf
+    Action     : escalate
+    Confidence : high
+    Root Cause : PySparkTypeError: Argument `col` should be a Column or str, got float.
+    Reasoning  : The error indicates a misuse of the PySpark API where a float is being passed to a function that expects a Column or string. This is a code issue that needs to be fixed by changing the logic to ensure the correct data types are used.
+    Fix Hint   : none
+2026-05-03 17:04:02,421 [INFO] notifier: Email sent: ⚠️ Escalation Required: POC - Workspace A - Bronze Pipeline → ['pappu.pink@yahoo.com']
+2026-05-03 17:04:02,421 [INFO] analyzer:   Sending to LLM | key=pipeline_8bf0fd99-d478-4f63-9fe6-f02eee14d7e0_d82bcc81-f8db-4303-a8a6-d6b70940dfb2
+    error   : API_CALL
+    stderr  : Update d82bcc has failed. Failed to analyze flow 'workspace.dlt_retry_test.bronze_taxi_data'. Traceback (most recent cal
+    stdout  : ⚠️ empty
+2026-05-03 17:04:05,066 [INFO] analyzer: LLM → escalate (high) | AnalysisException: Unresolved column 'invalid_column_name'.
+2026-05-03 17:04:05,067 [INFO] monitor:   Analysis | pipeline_8bf0fd99-d478-4f63-9fe6-f02eee14d7e0_d82bcc81-f8db-4303-a8a6-d6b70940dfb2
+    Action     : escalate
+    Confidence : high
+    Root Cause : AnalysisException: Unresolved column 'invalid_column_name'.
+    Reasoning  : The error trace shows an AnalysisException caused by a reference to a non-existent column 'invalid_column_name'. This is a deterministic code issue that will not be resolved by retrying the pipeline.
+    Fix Hint   : Correct the column name in the filter operation to one of the existing columns: `fare_amount`, `pickup_zip`, `dropoff_zip`, `trip_distance`, or `tpep_dropoff_datetime`.
+2026-05-03 17:04:08,553 [INFO] notifier: Email sent: ⚠️ Escalation Required: Test Pipeline 6 - Retry Success (Fails First, Fixed on Retry) → ['pappu.pink@yahoo.com']
+2026-05-03 17:04:08,553 [INFO] analyzer:   Sending to LLM | key=pipeline_e5a7e9d4-913f-4688-ba01-9e61146fca4f_06cef959-915f-436f-b344-c79615f289ec
+    error   : RETRY_ON_FAILURE
+    stderr  : Update 06cef9 is FAILED. [NO_TABLES_IN_PIPELINE] Pipelines are expected to have at least one table defined but no tables
+    stdout  : ⚠️ empty
+2026-05-03 17:04:11,498 [INFO] analyzer: LLM → escalate (high) | NO_TABLES_IN_PIPELINE error due to missing table definitions in the pipeline.
+2026-05-03 17:04:11,498 [INFO] monitor:   Analysis | pipeline_e5a7e9d4-913f-4688-ba01-9e61146fca4f_06cef959-915f-436f-b344-c79615f289ec
+    Action     : escalate
+    Confidence : high
+    Root Cause : NO_TABLES_IN_PIPELINE error due to missing table definitions in the pipeline.
+    Reasoning  : The error '[NO_TABLES_IN_PIPELINE]' indicates that the pipeline does not have any tables defined, which is a configuration issue. This error is repeated across multiple updates, suggesting a persistent configuration problem rather than a transient issue.
+    Fix Hint   : Ensure that the pipeline includes at least one table definition using CREATE MATERIALIZED VIEW in SQL or @dlt.table in Python.
+2026-05-03 17:04:14,934 [INFO] notifier: Email sent: ⚠️ Escalation Required: Test Pipeline 1 - Successful Bronze to Silver → ['pappu.pink@yahoo.com']
+2026-05-03 17:04:14,934 [INFO] analyzer:   Sending to LLM | key=pipeline_e80b2fde-95dd-46c7-8bc8-7f74e7a8dde2_85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+    error   : USER_ACTION
+    stderr  : Update 85316b has failed. Failed to analyze flow 'workspace.workspace_b_silver.silver_enriched_transactions'. Traceback 
+    stdout  : ⚠️ empty
+2026-05-03 17:04:17,333 [INFO] analyzer: LLM → escalate (high) | pyspark.errors.exceptions.captured.AnalysisException: [TABLE_OR_VIEW_NOT_FOUND] The table or view `workspace`.`workspace_a_bronze`.`bronze_customer_transactions` cannot be found.
+2026-05-03 17:04:17,333 [INFO] monitor:   Analysis | pipeline_e80b2fde-95dd-46c7-8bc8-7f74e7a8dde2_85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+    Action     : escalate
+    Confidence : high
+    Root Cause : pyspark.errors.exceptions.captured.AnalysisException: [TABLE_OR_VIEW_NOT_FOUND] The table or view `workspace`.`workspace_a_bronze`.`bronze_customer_transactions` cannot be found.
+    Reasoning  : The error traceback indicates an AnalysisException due to a missing table `workspace.workspace_a_bronze.bronze_customer_transactions`. This is a deterministic error related to the table's existence or accessibility, which cannot be resolved by a simple retry.
+    Fix Hint   : Ensure that the table `workspace.workspace_a_bronze.bronze_customer_transactions` exists and is accessible with the correct schema and catalog. Verify permissions and correct any discrepancies in the table path.
+2026-05-03 17:04:20,812 [INFO] notifier: Email sent: ⚠️ Escalation Required: POC - Workspace B - Analytics Pipeline → ['pappu.pink@yahoo.com']
+2026-05-03 17:04:20,813 [INFO] monitor: ─── Scan cycle @ 17:04:20 UTC ───────────────────────────────
+2026-05-03 17:04:21,611 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:05:21,173 [INFO] monitor: ─── Scan cycle @ 17:05:21 UTC ───────────────────────────────
+2026-05-03 17:05:21,968 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:06:21,526 [INFO] monitor: ─── Scan cycle @ 17:06:21 UTC ───────────────────────────────
+2026-05-03 17:06:22,350 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:07:21,875 [INFO] monitor: ─── Scan cycle @ 17:07:21 UTC ───────────────────────────────
+2026-05-03 17:07:22,690 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:08:22,233 [INFO] monitor: ─── Scan cycle @ 17:08:22 UTC ───────────────────────────────
+2026-05-03 17:08:23,154 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:09:22,586 [INFO] monitor: ─── Scan cycle @ 17:09:22 UTC ───────────────────────────────
+2026-05-03 17:09:23,417 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:10:22,944 [INFO] monitor: ─── Scan cycle @ 17:10:22 UTC ───────────────────────────────
+2026-05-03 17:10:23,752 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:11:23,299 [INFO] monitor: ─── Scan cycle @ 17:11:23 UTC ───────────────────────────────
+2026-05-03 17:11:24,422 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:12:23,657 [INFO] monitor: ─── Scan cycle @ 17:12:23 UTC ───────────────────────────────
+2026-05-03 17:12:25,064 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:13:24,394 [INFO] monitor: ─── Scan cycle @ 17:13:24 UTC ───────────────────────────────
+2026-05-03 17:13:25,194 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 0
+2026-05-03 17:14:24,753 [INFO] monitor: ─── Scan cycle @ 17:14:24 UTC ───────────────────────────────
+2026-05-04 13:21:20,869 [INFO] agent: ========================================================
+2026-05-04 13:21:20,870 [INFO] agent:   Databricks 24/7 Reliability Agent
+2026-05-04 13:21:20,870 [INFO] agent: ========================================================
+2026-05-04 13:21:20,870 [INFO] agent:   Host     : https://dbc-40d2e8f5-733e.cloud.databricks.com
+2026-05-04 13:21:20,871 [INFO] agent:   Poll     : every 60s
+2026-05-04 13:21:20,871 [INFO] agent:   Lookback : 60 min on first scan
+2026-05-04 13:21:20,871 [INFO] agent:   Email    : ✓ smtp.gmail.com
+2026-05-04 13:21:20,871 [INFO] agent: ========================================================
+2026-05-04 13:21:20,902 [INFO] agent: Monitoring ALL jobs and pipelines. Press Ctrl+C to stop.
+
+2026-05-04 13:21:20,903 [INFO] monitor: ─── Scan cycle @ 13:21:20 UTC ───────────────────────────────
+2026-05-04 13:21:26,177 [INFO] monitor:   Extracted for run 333892971531996 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:26,177 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=333892971531996
+2026-05-04 13:21:27,500 [INFO] monitor:   Extracted for run 447502867681491 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:27,501 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=447502867681491
+2026-05-04 13:21:28,775 [INFO] monitor:   Extracted for run 929860227062333 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:28,775 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=929860227062333
+2026-05-04 13:21:30,120 [INFO] monitor:   Extracted for run 306155415523215 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:30,121 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=306155415523215
+2026-05-04 13:21:31,415 [INFO] monitor:   Extracted for run 886063398445548 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:31,416 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=886063398445548
+2026-05-04 13:21:32,612 [INFO] monitor:   Extracted for run 649883275446131 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:32,612 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=649883275446131
+2026-05-04 13:21:33,189 [INFO] agent: Shutdown signal received — stopping after current cycle…
+2026-05-04 13:21:33,859 [INFO] monitor:   Extracted for run 627115874919784 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:33,860 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=627115874919784
+2026-05-04 13:21:35,077 [INFO] monitor:   Extracted for run 664301977114822 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:35,078 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=664301977114822
+2026-05-04 13:21:36,540 [INFO] monitor:   Extracted for run 775835575756136 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:36,541 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=775835575756136
+2026-05-04 13:21:37,856 [INFO] monitor:   Extracted for run 1042600074610920 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:37,857 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=1042600074610920
+2026-05-04 13:21:39,096 [INFO] monitor:   Extracted for run 654906307979324 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:39,096 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=654906307979324
+2026-05-04 13:21:40,343 [INFO] monitor:   Extracted for run 887637625544049 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:40,343 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=887637625544049
+2026-05-04 13:21:41,627 [INFO] monitor:   Extracted for run 527494021781203 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:41,627 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=527494021781203
+2026-05-04 13:21:42,862 [INFO] monitor:   Extracted for run 577995691377635 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:42,862 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=577995691377635
+2026-05-04 13:21:47,640 [INFO] agent: ========================================================
+2026-05-04 13:21:47,640 [INFO] agent:   Databricks 24/7 Reliability Agent
+2026-05-04 13:21:47,640 [INFO] agent: ========================================================
+2026-05-04 13:21:47,640 [INFO] agent:   Host     : https://dbc-40d2e8f5-733e.cloud.databricks.com
+2026-05-04 13:21:47,641 [INFO] agent:   Poll     : every 60s
+2026-05-04 13:21:47,641 [INFO] agent:   Lookback : 60 min on first scan
+2026-05-04 13:21:47,641 [INFO] agent:   Email    : ✓ smtp.gmail.com
+2026-05-04 13:21:47,641 [INFO] agent: ========================================================
+2026-05-04 13:21:47,654 [INFO] agent: Monitoring ALL jobs and pipelines. Press Ctrl+C to stop.
+
+2026-05-04 13:21:47,654 [INFO] monitor: ─── Scan cycle @ 13:21:47 UTC ───────────────────────────────
+2026-05-04 13:21:52,538 [INFO] monitor:   Extracted for run 333892971531996 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:52,538 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=333892971531996
+2026-05-04 13:21:53,680 [INFO] monitor:   Extracted for run 447502867681491 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:53,680 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=447502867681491
+2026-05-04 13:21:54,797 [INFO] monitor:   Extracted for run 929860227062333 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:54,798 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=929860227062333
+2026-05-04 13:21:55,934 [INFO] monitor:   Extracted for run 306155415523215 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:55,935 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=306155415523215
+2026-05-04 13:21:57,110 [INFO] monitor:   Extracted for run 886063398445548 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:57,110 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=886063398445548
+2026-05-04 13:21:58,245 [INFO] monitor:   Extracted for run 649883275446131 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:58,245 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=649883275446131
+2026-05-04 13:21:59,355 [INFO] monitor:   Extracted for run 627115874919784 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:21:59,356 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=627115874919784
+2026-05-04 13:22:00,662 [INFO] monitor:   Extracted for run 664301977114822 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:00,663 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=664301977114822
+2026-05-04 13:22:01,829 [INFO] monitor:   Extracted for run 775835575756136 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:01,830 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=775835575756136
+2026-05-04 13:22:03,017 [INFO] monitor:   Extracted for run 1042600074610920 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:03,018 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=1042600074610920
+2026-05-04 13:22:04,130 [INFO] monitor:   Extracted for run 654906307979324 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:04,130 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=654906307979324
+2026-05-04 13:22:05,212 [INFO] monitor:   Extracted for run 887637625544049 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:05,213 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=887637625544049
+2026-05-04 13:22:06,367 [INFO] monitor:   Extracted for run 527494021781203 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:06,367 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=527494021781203
+2026-05-04 13:22:07,631 [INFO] monitor:   Extracted for run 577995691377635 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:07,631 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=577995691377635
+2026-05-04 13:22:08,925 [INFO] monitor:   Extracted for run 816054498073125 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:08,925 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=816054498073125
+2026-05-04 13:22:10,193 [INFO] monitor:   Extracted for run 538083239759602 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:10,194 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=538083239759602
+2026-05-04 13:22:11,450 [INFO] monitor:   Extracted for run 1066448510892384 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:11,451 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=1066448510892384
+2026-05-04 13:22:12,748 [INFO] monitor:   Extracted for run 970583914047100 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:12,748 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=970583914047100
+2026-05-04 13:22:13,948 [INFO] monitor:   Extracted for run 291252684252403 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:13,949 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=291252684252403
+2026-05-04 13:22:15,243 [INFO] monitor:   Extracted for run 613249565442849 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:15,244 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=613249565442849
+2026-05-04 13:22:16,498 [INFO] monitor:   Extracted for run 657016113489695 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:16,498 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=657016113489695
+2026-05-04 13:22:17,723 [INFO] monitor:   Extracted for run 640580493790379 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:17,723 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=640580493790379
+2026-05-04 13:22:19,029 [INFO] monitor:   Extracted for run 1078629260668703 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:19,030 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=1078629260668703
+2026-05-04 13:22:20,329 [INFO] monitor:   Extracted for run 555020545784226 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:20,329 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=555020545784226
+2026-05-04 13:22:21,627 [INFO] monitor:   Extracted for run 703422591103448 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:21,627 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=703422591103448
+2026-05-04 13:22:22,909 [INFO] monitor:   Extracted for run 557383804500931 | error=221 chars | stderr=30612 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:22,909 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=557383804500931
+2026-05-04 13:22:24,134 [INFO] monitor:   Extracted for run 78366538063713 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:24,135 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=78366538063713
+2026-05-04 13:22:25,331 [INFO] monitor:   Extracted for run 1013309459500097 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:25,331 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=1013309459500097
+2026-05-04 13:22:26,594 [INFO] monitor:   Extracted for run 356667254492588 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:26,595 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=356667254492588
+2026-05-04 13:22:27,760 [INFO] monitor:   Extracted for run 636496321676884 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:27,761 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=636496321676884
+2026-05-04 13:22:29,011 [INFO] monitor:   Extracted for run 7106889777283 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:29,012 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=7106889777283
+2026-05-04 13:22:30,236 [INFO] monitor:   Extracted for run 715308672401021 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:30,237 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=715308672401021
+2026-05-04 13:22:31,400 [INFO] monitor:   Extracted for run 217749594517447 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:31,400 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=217749594517447
+2026-05-04 13:22:32,637 [INFO] monitor:   Extracted for run 402506484867530 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:32,638 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=402506484867530
+2026-05-04 13:22:33,933 [INFO] monitor:   Extracted for run 380477448757605 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:33,934 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=380477448757605
+2026-05-04 13:22:35,212 [INFO] monitor:   Extracted for run 640188938368553 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:35,212 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=640188938368553
+2026-05-04 13:22:36,436 [INFO] monitor:   Extracted for run 774328110043369 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:36,436 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=774328110043369
+2026-05-04 13:22:37,560 [INFO] monitor:   Extracted for run 1104625940363506 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:37,560 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=1104625940363506
+2026-05-04 13:22:38,793 [INFO] monitor:   Extracted for run 618141695840115 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:38,793 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=618141695840115
+2026-05-04 13:22:39,972 [INFO] monitor:   Extracted for run 833278860283263 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:39,973 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=833278860283263
+2026-05-04 13:22:41,247 [INFO] monitor:   Extracted for run 347324658245420 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:41,247 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=347324658245420
+2026-05-04 13:22:42,483 [INFO] monitor:   Extracted for run 922243489347069 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:42,483 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=922243489347069
+2026-05-04 13:22:43,788 [INFO] monitor:   Extracted for run 1018808921841851 | error=221 chars | stderr=30612 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:43,789 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=1018808921841851
+2026-05-04 13:22:44,991 [INFO] monitor:   Extracted for run 261084652647545 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:44,992 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=261084652647545
+2026-05-04 13:22:46,358 [INFO] monitor:   Extracted for run 476567184185429 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:46,358 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=476567184185429
+2026-05-04 13:22:47,499 [INFO] monitor:   Extracted for run 977347149609856 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:47,499 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=977347149609856
+2026-05-04 13:22:48,768 [INFO] monitor:   Extracted for run 702171584102883 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:48,768 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=702171584102883
+2026-05-04 13:22:50,017 [INFO] monitor:   Extracted for run 848115802528007 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:50,017 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=848115802528007
+2026-05-04 13:22:51,257 [INFO] monitor:   Extracted for run 743472800520858 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:51,257 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=743472800520858
+2026-05-04 13:22:52,594 [INFO] monitor:   Extracted for run 703155429917529 | error=221 chars | stderr=26747 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:52,594 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=703155429917529
+2026-05-04 13:22:53,781 [INFO] monitor:   Extracted for run 95022060882429 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:53,781 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=95022060882429
+2026-05-04 13:22:54,943 [INFO] monitor:   Extracted for run 496475554614061 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:54,943 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=496475554614061
+2026-05-04 13:22:56,194 [INFO] monitor:   Extracted for run 835069990260757 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:56,195 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=835069990260757
+2026-05-04 13:22:57,388 [INFO] monitor:   Extracted for run 136627931478280 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:57,388 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=136627931478280
+2026-05-04 13:22:58,610 [INFO] monitor:   Extracted for run 481814441945104 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:58,611 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=481814441945104
+2026-05-04 13:22:59,836 [INFO] monitor:   Extracted for run 711292608873824 | error=221 chars | stderr=30612 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:22:59,836 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=711292608873824
+2026-05-04 13:23:01,079 [INFO] monitor:   Extracted for run 1113527237968952 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:23:01,079 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=1113527237968952
+2026-05-04 13:23:02,244 [INFO] monitor:   Extracted for run 564429724768637 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:23:02,245 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=564429724768637
+2026-05-04 13:23:03,409 [INFO] monitor:   Extracted for run 26615230612846 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:23:03,409 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=26615230612846
+2026-05-04 13:23:04,529 [INFO] monitor:   Extracted for run 715460516238493 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:23:04,530 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=715460516238493
+2026-05-04 13:23:05,768 [INFO] monitor:   Pipeline events extracted for 60aa8671-a7af-41ad-bd60-b09fbf3df730 | len=1490
+2026-05-04 13:23:05,768 [WARNING] monitor:   [P] FAILED | name=POC - Workspace A - Bronze Pipeline update=f933974d-79c6-420f-9af9-3569e1734ecf
+2026-05-04 13:23:06,406 [INFO] monitor:   Pipeline events extracted for 8bf0fd99-d478-4f63-9fe6-f02eee14d7e0 | len=3732
+2026-05-04 13:23:06,407 [WARNING] monitor:   [P] FAILED | name=Test Pipeline 6 - Retry Success (Fails First, Fixed on Retry) update=d1108653-e296-4085-8505-d28d845bf2a1
+2026-05-04 13:23:07,072 [INFO] monitor:   Pipeline events extracted for e5a7e9d4-913f-4688-ba01-9e61146fca4f | len=3262
+2026-05-04 13:23:07,072 [WARNING] monitor:   [P] FAILED | name=Test Pipeline 1 - Successful Bronze to Silver update=06cef959-915f-436f-b344-c79615f289ec
+2026-05-04 13:23:07,732 [INFO] monitor:   Pipeline events extracted for e80b2fde-95dd-46c7-8bc8-7f74e7a8dde2 | len=5369
+2026-05-04 13:23:07,732 [WARNING] monitor:   [P] FAILED | name=POC - Workspace B - Analytics Pipeline update=85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+2026-05-04 13:23:07,733 [INFO] monitor:   Jobs (completed): 60  |  Jobs (transitions): 0  |  Pipelines: 4  |  Total: 64
+2026-05-04 13:23:07,733 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_333892971531996
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:23:11,872 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:23:11,872 [INFO] monitor:   Analysis | job_1081982861111827_333892971531996
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:23:15,895 [INFO] notifier: Email sent: ⚠️ Escalation Required: Failing PySpark Job - Every Minute → ['pappu.pink@yahoo.com']
+2026-05-04 13:23:15,896 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_447502867681491
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:23:18,401 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:23:18,401 [INFO] monitor:   Analysis | job_1081982861111827_447502867681491
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that will not be resolved by retrying the job.
+    Fix Hint   : Correct the PySpark code to avoid division by zero, possibly by adding a check before performing the division.
+2026-05-04 13:23:22,158 [INFO] notifier: Email sent: ⚠️ Escalation Required: Failing PySpark Job - Every Minute → ['pappu.pink@yahoo.com']
+2026-05-04 13:23:22,159 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_929860227062333
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:23:24,058 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: division by zero
+2026-05-04 13:23:24,059 [INFO] monitor:   Analysis | job_1081982861111827_929860227062333
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: division by zero
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code. This is a deterministic error in the user code and not a transient issue.
+    Fix Hint   : Ensure that the divisor in the division operation is not zero to prevent this error.
+2026-05-04 13:23:27,893 [INFO] notifier: Email sent: ⚠️ Escalation Required: Failing PySpark Job - Every Minute → ['pappu.pink@yahoo.com']
+2026-05-04 13:23:27,894 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_306155415523215
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:23:31,678 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:23:31,678 [INFO] monitor:   Analysis | job_1081982861111827_306155415523215
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:23:35,571 [INFO] notifier: Email sent: ⚠️ Escalation Required: Failing PySpark Job - Every Minute → ['pappu.pink@yahoo.com']
+2026-05-04 13:23:35,572 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_886063398445548
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:23:38,169 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:23:38,169 [INFO] monitor:   Analysis | job_1081982861111827_886063398445548
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:23:42,281 [INFO] notifier: Email sent: ⚠️ Escalation Required: Failing PySpark Job - Every Minute → ['pappu.pink@yahoo.com']
+2026-05-04 13:23:42,282 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_649883275446131
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:23:44,236 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:23:44,236 [INFO] monitor:   Analysis | job_1081982861111827_649883275446131
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:23:47,984 [INFO] notifier: Email sent: ⚠️ Escalation Required: Failing PySpark Job - Every Minute → ['pappu.pink@yahoo.com']
+2026-05-04 13:23:47,984 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_627115874919784
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:23:49,450 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:23:49,450 [INFO] monitor:   Analysis | job_1081982861111827_627115874919784
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that requires a code fix.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:23:53,185 [INFO] notifier: Email sent: ⚠️ Escalation Required: Failing PySpark Job - Every Minute → ['pappu.pink@yahoo.com']
+2026-05-04 13:23:53,185 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_664301977114822
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:23:55,634 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:23:55,634 [INFO] monitor:   Analysis | job_1081982861111827_664301977114822
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:23:58,190 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-8357c4f4530sm4908998b3a.9 - gsmtp')
+2026-05-04 13:23:58,191 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_775835575756136
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:23:59,718 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:23:59,718 [INFO] monitor:   Analysis | job_1081982861111827_775835575756136
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:24:02,227 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 41be03b00d2f7-c7ffbca323dsm10246909a12.28 - gsmtp')
+2026-05-04 13:24:02,228 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_1042600074610920
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:03,925 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero
+2026-05-04 13:24:03,925 [INFO] monitor:   Analysis | job_1081982861111827_1042600074610920
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:24:06,435 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae36885sm108452925ad.59 - gsmtp')
+2026-05-04 13:24:06,435 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_654906307979324
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:08,364 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:24:08,365 [INFO] monitor:   Analysis | job_1081982861111827_654906307979324
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:24:10,886 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 41be03b00d2f7-c7ffbc6f66dsm9905149a12.15 - gsmtp')
+2026-05-04 13:24:10,887 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_887637625544049
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:13,669 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:24:13,669 [INFO] monitor:   Analysis | job_1081982861111827_887637625544049
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that requires a code fix.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:24:16,172 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae4b0d5sm110529365ad.68 - gsmtp')
+2026-05-04 13:24:16,172 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_527494021781203
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:18,948 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:24:18,949 [INFO] monitor:   Analysis | job_1081982861111827_527494021781203
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Ensure that the divisor in the division operation is not zero.
+2026-05-04 13:24:21,452 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-835158bc863sm11335983b3a.26 - gsmtp')
+2026-05-04 13:24:21,452 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_577995691377635
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:23,385 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:24:23,386 [INFO] monitor:   Analysis | job_1081982861111827_577995691377635
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:24:25,920 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-36528ad3154sm5709300a91.2 - gsmtp')
+2026-05-04 13:24:25,920 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_816054498073125
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:29,484 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:24:29,484 [INFO] monitor:   Analysis | job_1081982861111827_816054498073125
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:24:31,999 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae0f644sm100981505ad.52 - gsmtp')
+2026-05-04 13:24:31,999 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_538083239759602
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:33,956 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero
+2026-05-04 13:24:33,957 [INFO] monitor:   Analysis | job_1081982861111827_538083239759602
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a deterministic code error and not a transient issue.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:24:36,630 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 41be03b00d2f7-c8023e6eabesm4971241a12.5 - gsmtp')
+2026-05-04 13:24:36,631 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_1066448510892384
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:38,741 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:24:38,742 [INFO] monitor:   Analysis | job_1081982861111827_1066448510892384
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:24:41,219 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-364efa96824sm11357065a91.15 - gsmtp')
+2026-05-04 13:24:41,220 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_970583914047100
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:42,975 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:24:42,976 [INFO] monitor:   Analysis | job_1081982861111827_970583914047100
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Ensure that the divisor in the withColumn operation is not zero.
+2026-05-04 13:24:45,537 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2ba38c02578sm22538745ad.79 - gsmtp')
+2026-05-04 13:24:45,538 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_291252684252403
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:47,133 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:24:47,134 [INFO] monitor:   Analysis | job_1081982861111827_291252684252403
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:24:49,715 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-83707fab756sm5158122b3a.44 - gsmtp')
+2026-05-04 13:24:49,715 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_613249565442849
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:51,214 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:24:51,215 [INFO] monitor:   Analysis | job_1081982861111827_613249565442849
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:24:53,793 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-83515b485eesm11136335b3a.48 - gsmtp')
+2026-05-04 13:24:53,793 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_657016113489695
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:24:55,596 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:24:55,596 [INFO] monitor:   Analysis | job_1081982861111827_657016113489695
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:24:58,395 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae68443sm100973255ad.81 - gsmtp')
+2026-05-04 13:24:58,396 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_640580493790379
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:00,075 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:00,076 [INFO] monitor:   Analysis | job_1081982861111827_640580493790379
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:25:02,591 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae15fb6sm108965925ad.43 - gsmtp')
+2026-05-04 13:25:02,591 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_1078629260668703
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:04,056 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:04,057 [INFO] monitor:   Analysis | job_1081982861111827_1078629260668703
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:25:06,596 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-364f47b14fdsm5765504a91.3 - gsmtp')
+2026-05-04 13:25:06,596 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_555020545784226
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:08,692 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:25:08,692 [INFO] monitor:   Analysis | job_1081982861111827_555020545784226
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a deterministic code error that will not be resolved by retrying.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:25:11,335 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-36568dfa4e2sm496619a91.2 - gsmtp')
+2026-05-04 13:25:11,336 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_703422591103448
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:13,636 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:13,637 [INFO] monitor:   Analysis | job_1081982861111827_703422591103448
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:25:16,164 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae15fb6sm108973215ad.43 - gsmtp')
+2026-05-04 13:25:16,165 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_557383804500931
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:17,968 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:17,968 [INFO] monitor:   Analysis | job_1081982861111827_557383804500931
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:25:20,576 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae6ac32sm108915315ad.83 - gsmtp')
+2026-05-04 13:25:20,577 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_78366538063713
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:23,234 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:23,234 [INFO] monitor:   Analysis | job_1081982861111827_78366538063713
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:25:25,822 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9caac6e7asm97107135ad.30 - gsmtp')
+2026-05-04 13:25:25,822 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_1013309459500097
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:27,800 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:25:27,801 [INFO] monitor:   Analysis | job_1081982861111827_1013309459500097
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed by the user.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:25:30,327 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-364ec00a713sm11474090a91.12 - gsmtp')
+2026-05-04 13:25:30,327 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_356667254492588
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:32,350 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:25:32,351 [INFO] monitor:   Analysis | job_1081982861111827_356667254492588
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:25:34,920 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-835158bcb99sm13691685b3a.25 - gsmtp')
+2026-05-04 13:25:34,920 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_636496321676884
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:36,730 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:36,730 [INFO] monitor:   Analysis | job_1081982861111827_636496321676884
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that will not be resolved by retrying.
+    Fix Hint   : Correct the PySpark code to avoid division by zero, possibly by adding a check before performing the division.
+2026-05-04 13:25:39,315 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 41be03b00d2f7-c7ffbbbfb1esm9748743a12.14 - gsmtp')
+2026-05-04 13:25:39,316 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_7106889777283
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:40,910 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:40,910 [INFO] monitor:   Analysis | job_1081982861111827_7106889777283
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:25:43,481 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2ba38c02578sm22567555ad.79 - gsmtp')
+2026-05-04 13:25:43,481 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_715308672401021
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:45,422 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:45,422 [INFO] monitor:   Analysis | job_1081982861111827_715308672401021
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a deterministic code error that requires a code fix.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:25:48,015 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-83515b5b921sm14280522b3a.54 - gsmtp')
+2026-05-04 13:25:48,015 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_217749594517447
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:50,004 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:50,005 [INFO] monitor:   Analysis | job_1081982861111827_217749594517447
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:25:52,681 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9caaae662sm105647825ad.22 - gsmtp')
+2026-05-04 13:25:52,682 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_402506484867530
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:54,615 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:54,616 [INFO] monitor:   Analysis | job_1081982861111827_402506484867530
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:25:57,136 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-8351582edf9sm12001961b3a.12 - gsmtp')
+2026-05-04 13:25:57,137 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_380477448757605
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:25:58,945 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:25:58,946 [INFO] monitor:   Analysis | job_1081982861111827_380477448757605
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:26:01,512 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae3b8e6sm99585245ad.65 - gsmtp')
+2026-05-04 13:26:01,513 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_640188938368553
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:04,447 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:26:04,448 [INFO] monitor:   Analysis | job_1081982861111827_640188938368553
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:26:07,023 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae68476sm104023955ad.80 - gsmtp')
+2026-05-04 13:26:07,024 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_774328110043369
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:08,848 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:26:08,848 [INFO] monitor:   Analysis | job_1081982861111827_774328110043369
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:26:11,324 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-83515acfbcdsm13198571b3a.30 - gsmtp')
+2026-05-04 13:26:11,324 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_1104625940363506
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:14,436 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:26:14,437 [INFO] monitor:   Analysis | job_1081982861111827_1104625940363506
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:26:16,937 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 41be03b00d2f7-c7ffbcaa477sm9806887a12.31 - gsmtp')
+2026-05-04 13:26:16,937 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_618141695840115
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:19,223 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:26:19,224 [INFO] monitor:   Analysis | job_1081982861111827_618141695840115
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:26:21,802 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae0f67esm110436945ad.51 - gsmtp')
+2026-05-04 13:26:21,802 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_833278860283263
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:23,653 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:26:23,653 [INFO] monitor:   Analysis | job_1081982861111827_833278860283263
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:26:26,289 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-835532a3aa2sm6709827b3a.41 - gsmtp')
+2026-05-04 13:26:26,290 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_347324658245420
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:28,125 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:26:28,126 [INFO] monitor:   Analysis | job_1081982861111827_347324658245420
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:26:30,596 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-83515b87869sm12971208b3a.61 - gsmtp')
+2026-05-04 13:26:30,597 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_922243489347069
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:32,309 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:26:32,309 [INFO] monitor:   Analysis | job_1081982861111827_922243489347069
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Ensure that the divisor in the calculation is not zero to prevent division by zero errors.
+2026-05-04 13:26:34,805 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-3650e94126dsm8761306a91.5 - gsmtp')
+2026-05-04 13:26:34,805 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_1018808921841851
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:36,942 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:26:36,942 [INFO] monitor:   Analysis | job_1081982861111827_1018808921841851
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that requires a fix in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:26:39,562 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-835158aeebesm10821582b3a.21 - gsmtp')
+2026-05-04 13:26:39,563 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_261084652647545
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:41,526 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:26:41,527 [INFO] monitor:   Analysis | job_1081982861111827_261084652647545
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:26:44,026 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-83515acfd8csm11756734b3a.29 - gsmtp')
+2026-05-04 13:26:44,027 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_476567184185429
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:45,760 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:26:45,761 [INFO] monitor:   Analysis | job_1081982861111827_476567184185429
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:26:48,472 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-835158bc863sm11342975b3a.26 - gsmtp')
+2026-05-04 13:26:48,473 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_977347149609856
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:50,888 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:26:50,889 [INFO] monitor:   Analysis | job_1081982861111827_977347149609856
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:26:53,643 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae10daesm101096395ad.53 - gsmtp')
+2026-05-04 13:26:53,644 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_702171584102883
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:26:56,156 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:26:56,157 [INFO] monitor:   Analysis | job_1081982861111827_702171584102883
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:26:58,660 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 41be03b00d2f7-c8007295a12sm8513984a12.10 - gsmtp')
+2026-05-04 13:26:58,660 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_848115802528007
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:01,153 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:27:01,154 [INFO] monitor:   Analysis | job_1081982861111827_848115802528007
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a deterministic code error that will not be resolved by retrying.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:27:03,686 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-364ec00a713sm11479068a91.12 - gsmtp')
+2026-05-04 13:27:03,687 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_743472800520858
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:05,803 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:27:05,803 [INFO] monitor:   Analysis | job_1081982861111827_743472800520858
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:27:11,750 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 41be03b00d2f7-c7ffbc6f66dsm9913620a12.15 - gsmtp')
+2026-05-04 13:27:11,751 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_703155429917529
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:13,797 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:27:13,798 [INFO] monitor:   Analysis | job_1081982861111827_703155429917529
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:27:16,330 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-364ec042370sm11906015a91.17 - gsmtp')
+2026-05-04 13:27:16,331 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_95022060882429
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:18,496 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:27:18,496 [INFO] monitor:   Analysis | job_1081982861111827_95022060882429
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that requires a fix in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:27:21,110 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae4a127sm139739335ad.67 - gsmtp')
+2026-05-04 13:27:21,111 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_496475554614061
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:23,101 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:27:23,101 [INFO] monitor:   Analysis | job_1081982861111827_496475554614061
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:27:25,657 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-83515b01a4asm11537586b3a.43 - gsmtp')
+2026-05-04 13:27:25,657 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_835069990260757
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:28,347 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:27:28,348 [INFO] monitor:   Analysis | job_1081982861111827_835069990260757
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that requires a code fix.
+    Fix Hint   : Modify the PySpark code to handle division operations safely, ensuring no division by zero occurs.
+2026-05-04 13:27:30,855 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-8353fb8b097sm7373502b3a.22 - gsmtp')
+2026-05-04 13:27:30,855 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_136627931478280
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:33,366 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:27:33,366 [INFO] monitor:   Analysis | job_1081982861111827_136627931478280
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:27:35,867 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 41be03b00d2f7-c7ffbc8ad8dsm9417974a12.23 - gsmtp')
+2026-05-04 13:27:35,868 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_481814441945104
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:37,620 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:27:37,620 [INFO] monitor:   Analysis | job_1081982861111827_481814441945104
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code (line 6). This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:27:40,225 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae59864sm101824285ad.75 - gsmtp')
+2026-05-04 13:27:40,225 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_711292608873824
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:43,363 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:27:43,364 [INFO] monitor:   Analysis | job_1081982861111827_711292608873824
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:27:45,905 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 41be03b00d2f7-c7ffbb05798sm9733682a12.0 - gsmtp')
+2026-05-04 13:27:45,905 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_1113527237968952
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:50,330 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:27:50,330 [INFO] monitor:   Analysis | job_1081982861111827_1113527237968952
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that will not be resolved by retrying the job.
+    Fix Hint   : Correct the PySpark code to avoid division by zero, possibly by adding a check before performing the division.
+2026-05-04 13:27:52,894 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae4b0d5sm110644925ad.68 - gsmtp')
+2026-05-04 13:27:52,894 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_564429724768637
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:27:54,504 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:27:54,504 [INFO] monitor:   Analysis | job_1081982861111827_564429724768637
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Ensure that the divisor in the division operation is not zero.
+2026-05-04 13:27:57,121 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2ba1c451d9bsm41374115ad.1 - gsmtp')
+2026-05-04 13:27:57,122 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_26615230612846
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:28:00,820 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:28:00,820 [INFO] monitor:   Analysis | job_1081982861111827_26615230612846
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:28:03,420 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-364ec00b094sm11171792a91.9 - gsmtp')
+2026-05-04 13:28:03,421 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_715460516238493
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:28:07,241 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:28:07,241 [INFO] monitor:   Analysis | job_1081982861111827_715460516238493
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:28:09,788 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-83775b1eadesm3804549b3a.56 - gsmtp')
+2026-05-04 13:28:09,788 [INFO] analyzer:   Sending to LLM | key=pipeline_60aa8671-a7af-41ad-bd60-b09fbf3df730_f933974d-79c6-420f-9af9-3569e1734ecf
+    error   : USER_ACTION
+    stderr  : Update f93397 has failed. Failed to analyze flow 'workspace.workspace_a_bronze.bronze_customer_transactions' and 1 other
+    stdout  : ⚠️ empty
+2026-05-04 13:28:12,433 [INFO] analyzer: LLM → escalate (high) | PySparkTypeError: Argument `col` should be a Column or str, got float.
+2026-05-04 13:28:12,434 [INFO] monitor:   Analysis | pipeline_60aa8671-a7af-41ad-bd60-b09fbf3df730_f933974d-79c6-420f-9af9-3569e1734ecf
+    Action     : escalate
+    Confidence : high
+    Root Cause : PySparkTypeError: Argument `col` should be a Column or str, got float.
+    Reasoning  : The error is a PySparkTypeError indicating that a float was passed where a Column or string was expected. This is a code issue in the pipeline logic, specifically in the 'bronze_customer_transactions' and 'bronze_orders' flows, where the `round` function is applied to a float instead of a DataFrame column.
+    Fix Hint   : Ensure that the `round` function is applied to a DataFrame column or string, not a float.
+2026-05-04 13:28:15,056 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-835158bc863sm11347279b3a.26 - gsmtp')
+2026-05-04 13:28:15,056 [INFO] analyzer:   Sending to LLM | key=pipeline_8bf0fd99-d478-4f63-9fe6-f02eee14d7e0_d1108653-e296-4085-8505-d28d845bf2a1
+    error   : USER_ACTION
+    stderr  : Update d11086 has failed. Failed to analyze flow 'workspace.dlt_retry_test.bronze_taxi_data'. Traceback (most recent cal
+    stdout  : ⚠️ empty
+2026-05-04 13:28:18,820 [INFO] analyzer: LLM → escalate (high) | pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `invalid_column_name` cannot be resolved.
+2026-05-04 13:28:18,821 [INFO] monitor:   Analysis | pipeline_8bf0fd99-d478-4f63-9fe6-f02eee14d7e0_d1108653-e296-4085-8505-d28d845bf2a1
+    Action     : escalate
+    Confidence : high
+    Root Cause : pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `invalid_column_name` cannot be resolved.
+    Reasoning  : The error is due to a non-existent column `invalid_column_name` being referenced in the pipeline code, as indicated by the AnalysisException in the stack trace. This is a code issue that requires correction of the column name in the pipeline logic.
+    Fix Hint   : Correct the column name from `invalid_column_name` to one of the suggested valid columns such as `fare_amount`, `pickup_zip`, `dropoff_zip`, `trip_distance`, or `tpep_dropoff_datetime`.
+2026-05-04 13:28:21,413 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-364d1c70d8csm22318302a91.13 - gsmtp')
+2026-05-04 13:28:21,413 [INFO] analyzer:   Sending to LLM | key=pipeline_e5a7e9d4-913f-4688-ba01-9e61146fca4f_06cef959-915f-436f-b344-c79615f289ec
+    error   : RETRY_ON_FAILURE
+    stderr  : Update 06cef9 is FAILED. [NO_TABLES_IN_PIPELINE] Pipelines are expected to have at least one table defined but no tables
+    stdout  : ⚠️ empty
+2026-05-04 13:28:23,400 [INFO] analyzer: LLM → escalate (high) | NO_TABLES_IN_PIPELINE error indicating no tables were defined in the pipeline.
+2026-05-04 13:28:23,400 [INFO] monitor:   Analysis | pipeline_e5a7e9d4-913f-4688-ba01-9e61146fca4f_06cef959-915f-436f-b344-c79615f289ec
+    Action     : escalate
+    Confidence : high
+    Root Cause : NO_TABLES_IN_PIPELINE error indicating no tables were defined in the pipeline.
+    Reasoning  : The error message '[NO_TABLES_IN_PIPELINE]' clearly states that the pipeline failed because no tables were defined. This is a configuration issue where the pipeline lacks table definitions, such as CREATE MATERIALIZED VIEW in SQL or @dlt.table in Python.
+    Fix Hint   : Ensure that the pipeline includes at least one table definition using CREATE MATERIALIZED VIEW in SQL or @dlt.table in Python.
+2026-05-04 13:28:25,996 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-36568dfa4e2sm505884a91.2 - gsmtp')
+2026-05-04 13:28:25,997 [INFO] analyzer:   Sending to LLM | key=pipeline_e80b2fde-95dd-46c7-8bc8-7f74e7a8dde2_85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+    error   : USER_ACTION
+    stderr  : Update 85316b has failed. Failed to analyze flow 'workspace.workspace_b_silver.silver_enriched_transactions'. Traceback 
+    stdout  : ⚠️ empty
+2026-05-04 13:28:28,307 [INFO] analyzer: LLM → escalate (high) | pyspark.errors.exceptions.captured.AnalysisException: [TABLE_OR_VIEW_NOT_FOUND] The table or view `workspace`.`workspace_a_bronze`.`bronze_customer_transactions` cannot be found.
+2026-05-04 13:28:28,308 [INFO] monitor:   Analysis | pipeline_e80b2fde-95dd-46c7-8bc8-7f74e7a8dde2_85316b57-8ebb-4b48-b02d-2ce9a93d8c4d
+    Action     : escalate
+    Confidence : high
+    Root Cause : pyspark.errors.exceptions.captured.AnalysisException: [TABLE_OR_VIEW_NOT_FOUND] The table or view `workspace`.`workspace_a_bronze`.`bronze_customer_transactions` cannot be found.
+    Reasoning  : The error traceback indicates an AnalysisException due to a missing table `workspace.workspace_a_bronze.bronze_customer_transactions`. This is a deterministic error related to the table's existence or accessibility, which retrying will not resolve.
+    Fix Hint   : Ensure the table `workspace.workspace_a_bronze.bronze_customer_transactions` exists and is accessible with the correct schema and catalog. Verify permissions and correct any schema or catalog mismatches.
+2026-05-04 13:28:30,859 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9caa7e791sm106511415ad.7 - gsmtp')
+2026-05-04 13:28:30,859 [INFO] monitor: ─── Scan cycle @ 13:28:30 UTC ───────────────────────────────
+2026-05-04 13:28:33,799 [INFO] monitor:   Extracted for run 943385879234920 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:28:33,799 [WARNING] monitor:   [B] Transition FAILED | job=Failing PySpark Job - Every Minute run=943385879234920
+2026-05-04 13:28:35,048 [INFO] monitor:   Jobs (completed): 0  |  Jobs (transitions): 1  |  Pipelines: 0  |  Total: 1
+2026-05-04 13:28:35,048 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_943385879234920
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:28:37,485 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:28:37,486 [INFO] monitor:   Analysis | job_1081982861111827_943385879234920
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:28:40,007 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 41be03b00d2f7-c80203b451asm5380664a12.8 - gsmtp')
+2026-05-04 13:29:30,859 [INFO] monitor: ─── Scan cycle @ 13:29:30 UTC ───────────────────────────────
+2026-05-04 13:29:32,535 [INFO] monitor:   Extracted for run 929987791995624 | error=221 chars | stderr=30612 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:29:32,536 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=929987791995624
+2026-05-04 13:29:33,190 [INFO] monitor:   Jobs (completed): 1  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 1
+2026-05-04 13:29:33,190 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_929987791995624
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:29:35,312 [INFO] analyzer: LLM → escalate (high) | ArithmeticException: Division by zero in PySpark code.
+2026-05-04 13:29:35,312 [INFO] monitor:   Analysis | job_1081982861111827_929987791995624
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException: Division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:29:37,885 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-36568dfa4e2sm509869a91.2 - gsmtp')
+2026-05-04 13:30:30,860 [INFO] monitor: ─── Scan cycle @ 13:30:30 UTC ───────────────────────────────
+2026-05-04 13:30:32,526 [INFO] monitor:   Extracted for run 620320119820957 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:30:32,526 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=620320119820957
+2026-05-04 13:30:33,102 [INFO] monitor:   Jobs (completed): 1  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 1
+2026-05-04 13:30:33,103 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_620320119820957
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:30:35,362 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:30:35,363 [INFO] monitor:   Analysis | job_1081982861111827_620320119820957
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a code logic error that needs to be fixed by the developer.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:30:38,415 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9caa7ebc6sm106250495ad.5 - gsmtp')
+2026-05-04 13:31:30,860 [INFO] monitor: ─── Scan cycle @ 13:31:30 UTC ───────────────────────────────
+2026-05-04 13:31:32,502 [INFO] monitor:   Extracted for run 981619386011095 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:31:32,503 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=981619386011095
+2026-05-04 13:31:33,079 [INFO] monitor:   Jobs (completed): 1  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 1
+2026-05-04 13:31:33,080 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_981619386011095
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:31:35,148 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:31:35,148 [INFO] monitor:   Analysis | job_1081982861111827_981619386011095
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:31:37,789 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d2e1a72fcca58-83515ad0049sm13370388b3a.33 - gsmtp')
+2026-05-04 13:32:30,861 [INFO] monitor: ─── Scan cycle @ 13:32:30 UTC ───────────────────────────────
+2026-05-04 13:32:32,727 [INFO] monitor:   Extracted for run 1124705418914726 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:32:32,727 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=1124705418914726
+2026-05-04 13:32:33,324 [INFO] monitor:   Jobs (completed): 1  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 1
+2026-05-04 13:32:33,324 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_1124705418914726
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:32:35,608 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:32:35,609 [INFO] monitor:   Analysis | job_1081982861111827_1124705418914726
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that will not be resolved by retrying.
+    Fix Hint   : Ensure that the divisor in the calculation is not zero to prevent division by zero errors.
+2026-05-04 13:32:38,311 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9caa7ee38sm101734675ad.16 - gsmtp')
+2026-05-04 13:33:30,860 [INFO] monitor: ─── Scan cycle @ 13:33:30 UTC ───────────────────────────────
+2026-05-04 13:33:32,479 [INFO] monitor:   Extracted for run 5834849303143 | error=221 chars | stderr=29616 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:33:32,479 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=5834849303143
+2026-05-04 13:33:33,354 [INFO] monitor:   Jobs (completed): 1  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 1
+2026-05-04 13:33:33,355 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_5834849303143
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:33:36,485 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero in PySpark code.
+2026-05-04 13:33:36,486 [INFO] monitor:   Analysis | job_1081982861111827_5834849303143
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero in PySpark code.
+    Reasoning  : The innermost exception in the stack trace is an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid division by zero.
+2026-05-04 13:33:40,777 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 d9443c01a7336-2b9cae68443sm101191125ad.81 - gsmtp')
+2026-05-04 13:34:30,861 [INFO] monitor: ─── Scan cycle @ 13:34:30 UTC ───────────────────────────────
+2026-05-04 13:34:32,458 [INFO] monitor:   Extracted for run 850686978916304 | error=221 chars | stderr=25325 chars | stdout=0 chars | tasks_failed=1
+2026-05-04 13:34:32,459 [WARNING] monitor:   [A] FAILED | job=Failing PySpark Job - Every Minute run=850686978916304
+2026-05-04 13:34:33,095 [INFO] monitor:   Jobs (completed): 1  |  Jobs (transitions): 0  |  Pipelines: 0  |  Total: 1
+2026-05-04 13:34:33,096 [INFO] analyzer:   Sending to LLM | key=job_1081982861111827_850686978916304
+    error   : Run error: Task notebook_task_Failing_PySpark_Job failed with message: Workload failed, see run output for details.  Tas
+    stderr  : [task: notebook_task_Failing_PySpark_Job] stderr: [0;31m---------------------------------------------------------------
+    stdout  : ⚠️ empty
+2026-05-04 13:34:34,962 [INFO] analyzer: LLM → escalate (high) | ArithmeticException due to division by zero.
+2026-05-04 13:34:34,962 [INFO] monitor:   Analysis | job_1081982861111827_850686978916304
+    Action     : escalate
+    Confidence : high
+    Root Cause : ArithmeticException due to division by zero.
+    Reasoning  : The error trace shows an ArithmeticException caused by a division by zero operation in the PySpark code at line 7. This is a deterministic code error that needs to be fixed in the user script.
+    Fix Hint   : Correct the division operation in the PySpark code to avoid dividing by zero.
+2026-05-04 13:34:37,549 [ERROR] notifier: Email error: (550, b'5.4.5 Daily user sending limit exceeded. For more information on Gmail\n5.4.5 sending limits go to\n5.4.5  https://support.google.com/a/answer/166852 98e67ed59e1d1-364dd3e9a3dsm12567291a91.16 - gsmtp')

@@ -19,6 +19,7 @@ from config import Config
 
 if TYPE_CHECKING:
     from analyzer import Analysis
+    from stale_monitor import StaleAlert
 
 logger = logging.getLogger(__name__)
 
@@ -135,6 +136,47 @@ class Notifier:
             hdr_color="#7c3aed",
             title=f"⚠️ Escalation Required — {name}",
             subtitle="This failure needs manual investigation.",
+            rows=rows,
+        )
+
+
+    def send_stale_alert(self, alert: "StaleAlert") -> None:  # type: ignore[name-defined]
+        """Email for long-running, abandoned, hung-task, zombie, or stuck-pipeline."""
+        severity_color = {
+            "critical": "#dc2626",   # red
+            "warning":  "#d97706",   # amber
+        }.get(alert.severity, "#6b7280")
+
+        icon = {
+            "long_running":    "⏱️",
+            "abandoned":       "🚫",
+            "hung_task":       "🔒",
+            "zombie":          "🧟",
+            "stuck_pipeline":  "⚙️",
+        }.get(alert.alert_type, "⚠️")
+
+        type_label = alert.alert_type.replace("_", " ").title()
+        severity_label = alert.severity.upper()
+
+        rows = "".join([
+            _row("Alert Type",    f"{icon} {type_label}"),
+            _row("Severity",      severity_label),
+            _row("Name",          alert.name),
+            _row("State",         alert.state),
+            _row("Elapsed",       f"{alert.elapsed_min:.0f} minutes"),
+            _row("Task",          alert.task_key or "—"),
+            _row("Run ID",        str(alert.run_id) if alert.run_id else "—"),
+            _row("Job ID",        str(alert.job_id) if alert.job_id else "—"),
+            _row("Pipeline ID",   alert.pipeline_id or "—"),
+            _row("Details",       alert.details),
+            _row("Run URL",       alert.run_url),
+        ])
+
+        self._send(
+            subject=f"{icon} [{severity_label}] {type_label}: {alert.name} ({alert.elapsed_min:.0f} min)",
+            hdr_color=severity_color,
+            title=f"{icon} {type_label} — {alert.name}",
+            subtitle=f"State: {alert.state}  |  Elapsed: {alert.elapsed_min:.0f} min  |  Severity: {severity_label}",
             rows=rows,
         )
 
